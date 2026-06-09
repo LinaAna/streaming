@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { Navbar } from './shared/navbar/navbar';
+import { Vitrine } from './paginas/vitrine/vitrine';
 
 export const routes: Routes = [
-    {path: "navbar", component: Navbar},
-    {path: '',redirectTo: "navbar", pathMatch:'full'}
+    {path: "vitrine", component: Vitrine},
+    {path: '',redirectTo: "vitrine", pathMatch:'full'}
 ];
