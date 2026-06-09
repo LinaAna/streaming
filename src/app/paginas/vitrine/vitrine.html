@@ -31,8 +31,9 @@
       <!-- GRADE DE FILMES -->
       <section class="grade-filmes">
         
-
-        <app-movie></app-movie>
+        @for (item of movies(); track $index) {
+             <app-movie [data]="item"></app-movie>
+        }
        
 
       </section>

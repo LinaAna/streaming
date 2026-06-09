@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { MovieModel } from '../../core/models/movieModel';
 
 @Component({
   selector: 'app-movie',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './movie.html',
   styleUrl: './movie.css',
 })
-export class Movie {}
+export class Movie {
+  data=input.required<MovieModel>()
+}
