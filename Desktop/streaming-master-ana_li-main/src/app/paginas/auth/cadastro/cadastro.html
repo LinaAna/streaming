@@ -1,0 +1,161 @@
+<!-- Fundo animado decorativo -->
+<div class="movie-background"></div>
+<div class="movie-overlay"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<main class="page-wrapper">
+
+  <!-- Logo -->
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="StreamVerse – página inicial">
+      <span class="logo-next">Faça </span><span class="logo-movie">parte!</span>
+    </a>
+  </header>
+
+  <!-- Card -->
+<!--    -->
+   <section class="card" aria-labelledby="form-title">
+
+    <div class="card-header">
+      <h1 id="form-title" class="card-title">Criar sua conta</h1>
+      <p class="card-subtitle">Assista a tudo, em qualquer lugar.</p>
+    </div>
+
+    <form class="cadastro-form" [formGroup]="cadastroForm"
+      (ngSubmit)="onSubmit()">
+
+      <!-- Campo: Nome completo -->
+      <div class="field-group" id="group-name">
+        <label for="fullname" class="field-label">Nome completo</label>
+        
+        <div class="input-wrapper">
+          <i class="fa-solid fa-user input-icon" aria-hidden="true"></i>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            class="input-field"
+            placeholder="Seu nome completo"
+            autocomplete="name"
+            aria-describedby="error-name"
+            aria-required="true"
+            formControlName="name"
+          />
+        </div>
+        <span class="error-msg" id="error-name" role="alert" aria-live="polite"></span>
+      </div>
+
+      <!-- Campo: E-mail -->
+      <div class="field-group" id="group-email">
+        <label for="email" class="field-label">E-mail</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-envelope input-icon" aria-hidden="true"></i>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="input-field"
+            placeholder="seu@email.com"
+            autocomplete="email"
+            aria-describedby="error-email"
+            aria-required="true"
+            formControlName="email"
+          />
+        </div>
+        <span class="error-msg" id="error-email" role="alert" aria-live="polite"></span>
+      </div>
+
+      <!-- Campo: Senha -->
+      <div class="field-group" id="group-password">
+        <label for="password" class="field-label">Senha</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-lock input-icon" aria-hidden="true"></i>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="input-field"
+            placeholder="Mínimo 8 caracteres"
+            autocomplete="new-password"
+            aria-describedby="error-password"
+            aria-required="true"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            aria-label="Mostrar senha"
+            data-target="password">
+            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="strength-bar" aria-hidden="true">
+          <div class="strength-fill" id="strength-fill"></div>
+        </div>
+
+        <span class="strength-label" id="strength-label" aria-live="polite"></span>
+        <span class="error-msg" id="error-password" role="alert" aria-live="polite"></span>
+      </div>
+
+      <!-- Checkbox: Termos -->
+      <div class="field-group field-group--check" id="group-terms">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            class="checkbox-input"
+            aria-describedby="error-terms"
+          />
+          <span class="checkbox-custom" aria-hidden="true"></span>
+          <span class="checkbox-text">
+            Aceito os
+            <a href="#" class="link-terms">termos de uso</a>
+            e a
+            <a href="#" class="link-terms">política de privacidade</a>
+          </span>
+        </label>
+        <span class="error-msg" id="error-terms" role="alert" aria-live="polite"></span>
+      </div>
+
+       <!-- Botão -->
+<button
+  type="submit"
+  class="btn-submit"
+  id="btn-submit"
+  [disabled]="estaCarregando()">
+
+  @if (estaCarregando()) {
+    <span class="btn-text">Entrando...</span>
+    <span class="btn-spinner" aria-hidden="true"></span>
+  } @else {
+    <span class="btn-text">
+      Entrar na conta <i class="fas fa-sign-in-alt"></i>
+    </span>
+  }
+
+</button>
+
+    </form>
+
+    <!-- Link para login -->
+    <p class="login-link">
+      Já possui uma conta?
+      <a href="#" class="link-login">Entrar</a>
+    </p>
+
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="assertive"
+  aria-atomic="true">
+  <i class="fa-solid fa-circle-check toast-icon" aria-hidden="true"></i>
+  <span>Conta criada com sucesso! Bem-vindo(a) ao StreamVerse.</span>
+</div>

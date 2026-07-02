@@ -1,0 +1,103 @@
+<div class="sv-bg-glow"></div>
+<div class="sv-bg-glow2"></div>
+
+<div class="sv-inner">
+
+  <nav class="sv-nav">
+    <a href="#" class="sv-logo">
+      <span>Faça </span><span>parte!</span>
+    </a>
+
+    <div class="sv-nav-links">
+      <a href="#">Início</a>
+      <a href="#">Filmes</a>
+      <a href="#">Séries</a>
+      <a href="#">Ao vivo</a>
+      <a href="#">Minha lista</a>
+    </div>
+
+    <div class="sv-nav-actions">
+      <a routerLink="/login" class="sv-btn-ghost">Entrar</a>
+      <a routerLink="/cadastro" class="sv-btn-primary">Criar conta</a>
+    </div>
+  </nav>
+
+  <section class="sv-hero">
+    <div class="sv-hero-badge">
+      <i class="ti ti-bolt"></i>
+      Novo: Plano Família disponível
+    </div>
+
+    <h1>
+      O cinema na palma <br />
+      da sua <span class="accent">mão</span>
+    </h1>
+
+    <p>
+      Filmes, séries, documentários e muito mais.
+      Assista quando quiser, onde quiser, em qualquer dispositivo.
+    </p>
+
+    <div class="sv-hero-cta">
+      <a routerLink="/cadastro" class="sv-btn-cta">
+        <i class="ti ti-user-plus"></i>
+        Criar conta grátis
+      </a>
+
+      <a href="#planos" class="sv-btn-cta-outline">
+        <i class="ti ti-player-play"></i>
+        Ver planos
+      </a>
+    </div>
+  </section>
+  <section class="planos-container" id="planos">
+    <div class="planos-cabecalho">
+      <h2>Escolha o plano perfeito para você</h2>
+      <p>Sem burocracia. Cancele quando quiser.</p>
+    </div>
+
+    <div class="planos-grid">
+
+      <div class="plano-card">
+        <div class="plano-header">
+          <h3>Básico</h3>
+          <div class="plano-preco">
+            <span class="moeda">R$</span>
+            <span class="valor">19</span>
+            <span class="centavos">,90</span>
+            <span class="periodo">/mês</span>
+          </div>
+          <p class="plano-descricao">Perfeito para quem assiste sozinho no celular ou tablet.</p>
+        </div>
+        <ul class="plano-recursos">
+          <li><i class="fas fa-check"></i> Qualidade de vídeo Boa (720p)</li>
+          <li><i class="fas fa-check"></i> Assista em 1 tela por vez</li>
+          <li><i class="fas fa-check"></i> Download para assistir offline</li>
+        </ul>
+        <button class="btn-plano-secundario">Assinar Básico</button>
+      </div>
+
+      <div class="plano-card destaque">
+        <div class="tag-popular">NOVO E MAIS POPULAR</div>
+        <div class="plano-header">
+          <h3>Família</h3>
+          <div class="plano-preco">
+            <span class="moeda">R$</span>
+            <span class="valor">49</span>
+            <span class="centavos">,90</span>
+            <span class="periodo">/mês</span>
+          </div>
+          <p class="plano-descricao">A melhor experiência para dividir com toda a casa.</p>
+        </div>
+        <ul class="plano-recursos">
+          <li><i class="fas fa-check"></i> Qualidade de vídeo 4K + HDR</li>
+          <li><i class="fas fa-check"></i> Assista em até 4 telas ao mesmo tempo</li>
+          <li><i class="fas fa-check"></i> Download em todos os dispositivos</li>
+          <li><i class="fas fa-check"></i> Perfis infantis exclusivos</li>
+        </ul>
+        <button class="btn-plano-primario">Assinar Família</button>
+      </div>
+
+    </div>
+  </section>
+</div>

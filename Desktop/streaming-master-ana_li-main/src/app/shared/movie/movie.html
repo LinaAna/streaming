@@ -1,0 +1,17 @@
+  <article class="card-filme animar-subir delay-6">
+          <div class="card-img capa-6">
+            <!-- <div class="card-hover-overlay">
+              <span class="btn-play-overlay"><i class="fas fa-play"></i></span>
+            </div> -->
+
+            <img [src]="data().imagem_url">
+          </div>
+          <div class="card-info">
+            <span class="badge badge-verde"><i class="fas fa-theater-masks"></i>{{data().genero}}</span>
+            <h2 class="card-titulo">{{data().titulo}}</h2>
+            <div class="card-meta">
+              <span class="ano"><i class="far fa-calendar"></i> {{data().ano_lancamento}}</span>
+              <span class="card-nota"><i class="fas fa-star" style="color: var(--cor-aviso);"></i> 4.7/5</span>
+            </div>
+          </div>
+        </article>

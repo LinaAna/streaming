@@ -1,0 +1,516 @@
+/* You can add global styles to this file, and also import other style files */
+/* ================================================================
+   [DESIGN SYSTEM - STREAMING (STREAMVERSE)]
+   style.css — CSS GLOBAL E COMPARTILHADO DO PORTAL DE STREAMING
+   ================================================================ */
+
+:root {
+  /* Cores Temáticas Dark */
+  --cor-fundo: #1e5757;
+  --cor-escuro: #102b2b;/* Fundo secundário mais profundo para contraste */
+  --cor-texto: #f5f2eb;
+  --cor-texto-suave: #cfc5b5;/* Slate gray elegante para descrições */
+  --cor-cinza: #64748b; /* Cinza intermediário para metadados e bordas sutis */
+  --cor-borda: #f5f2eb;/* Azul acinzentado escuro */
+  
+  --cor-cinza: #8d9a9a;/* Verde-água neon (Destaque Principal) */
+  --cor-acento-hover: #d8c196; /* Verde-água translúcido para badges */
+  --cor-acento-hover: #95c1c5; /* Verde-água mais escuro para hover */
+  --cor-azul: #5f8f8f; /* Azul vibrante (Secundário) */
+  --cor-azul-clara: rgba(59, 130, 246, 0.12); /* Azul translúcido */
+  --cor-bege: #d8c196; /* Bege para tags de destaque */
+  --cor-sucesso: #10b981;
+  --cor-erro: #ef4444;
+  --cor-aviso: #f59e0b; /* Amarelo/Laranja para estrelas de nota */
+
+  /* Fontes do Sistema */
+  --fonte-titulo: 'Space Grotesk', sans-serif;
+  --fonte-corpo: 'Inter', sans-serif;
+
+  /* Espaçamentos Padronizados */
+  --espaco-xs: 4px;
+  --espaco-sm: 8px;
+  --espaco-md: 16px;
+  --espaco-lg: 24px;
+  --espaco-xl: 40px;
+  --espaco-2xl: 60px;
+
+  /* Bordas Arredondadas */
+  --raio: 16px;
+  --raio-sm: 8px;
+  --raio-pill: 100px;
+
+  /* Sombras Complexas (Ajustadas para fundos escuros, efeito de brilho e néon sutil) */
+  --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --sombra-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --sombra-lg: 0 12px 48px rgba(0, 0, 0, 0.7);
+  --sombra-neon: 0 0 20px rgba(45, 212, 191, 0.15);
+
+  /* Transição Suave */
+  --transicao: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================================
+   2. RESET ESTRUTURAL — Consistência de renderização
+   ================================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 50vh;
+    background-image: url('/filmes-wallpaper/wallpaper-login2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* opcional */
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--espaco-lg);
+}
+
+/* ================================================================
+   3. CABEÇALHO GLOBAL (GLASSMORPHISM PREMIADO)
+   ================================================================ */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background-color: rgba(5, 8, 12, 0.85); /* Fundo translúcido */
+  backdrop-filter: blur(12px); /* Efeito vidro jateado */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cor-borda);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transicao);
+}
+
+.logo {
+  font-family: var(--fonte-titulo);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--cor-texto);
+  letter-spacing: 0.5px;
+  transition: transform var(--transicao);
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo span {
+  color: var(--cor-acento);
+}
+
+.navegacao {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--transicao);
+}
+
+.nav-link:hover, 
+.nav-link.ativo {
+  color: var(--cor-acento);
+}
+
+/* Linha decorativa animada sob o link ativo/hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--cor-acento);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.ativo::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-sair {
+  background-color: transparent;
+  color: var(--cor-texto);
+  border: 1.5px solid var(--cor-borda);
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--raio-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+.btn-sair:hover {
+  background-color: var(--cor-texto);
+  border-color: var(--cor-texto);
+  color: var(--cor-escuro);
+}
+
+/* ================================================================
+   4. BOTÕES DO DESIGN SYSTEM
+   ================================================================ */
+.btn-primario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--cor-acento);
+  color: white;
+  padding: 14px 28px;
+  border-radius: var(--raio-pill);
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color var(--transicao), transform var(--transicao), box-shadow var(--transicao);
+}
+
+.btn-primario:hover {
+  background-color: var(--cor-acento-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45, 212, 191, 0.3);
+}
+
+.btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: transparent;
+  color: var(--cor-texto);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  padding: 13px 28px;
+  border-radius: var(--raio-pill);
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color var(--transicao), color var(--transicao), transform var(--transicao);
+}
+
+.btn-secundario:hover {
+  border-color: var(--cor-acento);
+  color: var(--cor-acento);
+  transform: translateY(-2px);
+}
+
+
+/* ================================================================
+   7. LAYOUT PRINCIPAL E GRADE DE FILMES
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  .layout-principal {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* CARD DE FILME INDIVIDUAL */
+.card-filme {
+  background-color: var(--cor-escuro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transicao), border-color var(--transicao), transform var(--transicao);
+}
+
+.card-filme:hover {
+  box-shadow: var(--sombra-lg), var(--sombra-neon);
+  border-color: var(--cor-acento);
+  transform: translateY(-3px);
+}
+
+/* Recipiente de Imagem com Zoom e Overlay de Play */
+.card-img {
+  height: 350px;
+  background-color: var(--cor-borda);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.card-filme:hover .card-img {
+  transform: scale(1.04);
+}
+
+
+/* Overlay escuro e botão de Play no hover */
+.card-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 8, 12, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transicao);
+}
+
+.card-filme:hover .card-hover-overlay {
+  opacity: 1;
+}
+
+.btn-play-overlay {
+  width: 60px;
+  height: 60px;
+  background-color: var(--cor-acento);
+  color: var(--cor-escuro);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transform: scale(0.8);
+  transition: transform var(--transicao);
+}
+
+.card-filme:hover .btn-play-overlay {
+  transform: scale(1);
+}
+
+.btn-play-overlay:hover {
+  background-color: var(--cor-acento-hover);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Informações do Card */
+.card-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Badges do Design System adaptados */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--raio-pill);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
+.badge-laranja {
+  background-color: rgba(232, 93, 38, 0.15);
+  color: #f97316;
+}
+
+.badge-verde {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--cor-sucesso);
+}
+
+.badge-cinza {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+}
+
+.badge-azul {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--cor-azul);
+}
+
+.card-titulo {
+  font-family: var(--fonte-corpo);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--cor-texto);
+  line-height: 1.3;
+  transition: color var(--transicao);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-filme:hover .card-titulo {
+  color: var(--cor-acento);
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  border-top: 1px solid var(--cor-borda);
+  padding-top: 12px;
+}
+
+.card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-nota {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cor-bege);
+}
+
+/* ================================================================
+   8. BARRA LATERAL (ESTATÍSTICAS)
+   ================================================================ */
+
+
+.estatisticas-titulo i {
+  color: var(--cor-acento);
+}
+
+.stat-box {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  padding: var(--espaco-md);
+  margin-bottom: var(--espaco-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform var(--transicao), border-color var(--transicao);
+}
+
+
+/* ================================================================
+   9. RODAPÉ GLOBAL E COMPARTILHADO
+   ================================================================ */
+.rodape {
+  background-color: var(--cor-escuro);
+  color: var(--cor-cinza);
+  text-align: center;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--cor-borda);
+  margin-top: var(--espaco-2xl);
+}
+
+.rodape-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 24px;
+  color: var(--cor-texto);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.rodape-logo span {
+  color: var(--cor-acento);
+}
+
+.rodape-texto {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ================================================================
+   10. ANIMAÇÕES DE CARGA (KEYFRAMES)
+   ================================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes subirFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes escalarEntrar {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Classes utilitárias prontas */
+.animar-fade {
+  animation: fadeIn 0.6s ease both;
+}
+
+.animar-subir {
+  animation: subirFadeIn 0.6s ease both;
+}
+
+.animar-escalar {
+  animation: escalarEntrar 0.5s ease both;
+}
+
+/* Delays para animação escalonada */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }

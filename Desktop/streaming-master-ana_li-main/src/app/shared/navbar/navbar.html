@@ -1,0 +1,38 @@
+<header class="cabecalho animar-fade">
+  <a routerLink="/inicio" class="logo">
+    Stream<span>Verse</span>
+  </a>
+
+  <nav class="navegacao">
+    <div class="menu">
+      <a routerLink="/inicio" class="nav-link ativo">Início</a>
+      <a routerLink="/vitrine" class="nav-link">Catálogo</a>
+      <a routerLink="/minhalista" class="nav-link">Minha Lista</a>
+    </div>
+
+    <div class="acoes">
+      <a routerLink="/perfis" class="btn-sair">
+        <i class="far fa-user-circle"></i>
+        <span>Perfis</span>
+      </a>
+
+      @if (authService.isLoggedIn()) {
+
+      <a routerLink="/admin" class="btn-sair">
+        Painel Admin
+      </a>
+
+      <button type="button" (click)="authService.logout()" class="btn-sair">
+        Sair
+      </button>
+
+      } @else {
+
+      <a routerLink="/login" class="btn-sair">
+        Login
+      </a>
+
+      }
+    </div>
+  </nav>
+</header>

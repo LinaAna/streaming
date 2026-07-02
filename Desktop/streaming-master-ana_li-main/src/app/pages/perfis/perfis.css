@@ -1,0 +1,32 @@
+h1{
+  color:white;
+  text-align:center;
+  margin-top:80px;
+}
+
+.lista-perfis{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  margin-top:80px;
+}
+
+.perfil{
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.perfil:hover{
+  transform:scale(1.05);
+}
+
+.perfil img{
+  width:150px;
+  border-radius:50%;
+}
+
+.perfil p{
+  color:white;
+  margin-top:10px;
+}

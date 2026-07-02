@@ -1,0 +1,519 @@
+/* ==========================================================================
+   STREAMVERSE — PÁGINA DE VITRINE (Cores sincronizadas com o Dashboard)
+   ========================================================================== */
+
+/* CONTAINER PRINCIPAL E LAYOUT */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #0f172a; /* Fundo padrão do dashboard */
+}
+
+.layout-principal {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+  align-items: start;
+  margin-top: 35px;
+}
+
+/* ==========================================================================
+   BANNER HERO PRINCIPAL DE DESTAQUE
+   ========================================================================== */
+.destaque {
+  position: relative;
+  background: linear-gradient(135px, #111827 0%, #1e293b 100%); /* Cores do sidebar e cards */
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 60px;
+  overflow: hidden;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.destaque-conteudo {
+  position: relative;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.tag-exclusivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(251, 191, 36, 0.1); /* Amarelo translúcido */
+  color: #fbbf24;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.destaque-titulo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.destaque-descricao {
+  font-size: 15px;
+  color: #94a3b8; /* Cinza suave do painel */
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.destaque-acoes {
+  display: flex;
+  gap: 15px;
+}
+
+/* BOTÕES DO HERO */
+.btn-primario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2563eb; /* Azul primário do painel */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primario:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #334155; /* Borda/fundo secundário */
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secundario:hover {
+  background-color: #475569;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* MARCA D'ÁGUA COLOSSAL */
+.banner-numero-fundo {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-size: 200px;
+  font-weight: 900;
+  color: rgba(37, 99, 235, 0.04); /* Azul bem sutil */
+  user-select: none;
+  z-index: 1;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ==========================================================================
+   BARRA DE FILTROS / GÊNEROS
+   ========================================================================== */
+.generos {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.generos::-webkit-scrollbar {
+  height: 4px;
+}
+
+.generos::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+.tag-genero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.tag-genero:hover {
+  border-color: #60a5fa;
+  color: white;
+}
+
+.tag-genero.ativo {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ==========================================================================
+   GRADE DE FILMES (E COMPONENTE <app-movie>)
+   ========================================================================== */
+.grade-filmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* Estilização para o seletor personalizado do Angular */
+app-movie {
+  display: block;
+}
+
+/* Seus cards de filmes internos herdarão a base visual do dashboard automaticamente:
+   background: #1e293b, border: 1px solid #334155, border-radius: 12px ou 16px */
+
+/* ==========================================================================
+   BARRA LATERAL (ESTATÍSTICAS DA SEMANA)
+   ========================================================================== */
+.estatisticas {
+  background-color: #111827; /* Mesma cor do sidebar */
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.estatisticas-titulo {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background-color: #1e293b; /* Fundo dos cards internos */
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-valor {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.destaque-texto {
+  color: #60a5fa; /* Azul claro para evidenciar itens em alta */
+}
+
+/* MAIS ASSISTIDOS (RANKING) */
+.top-filmes {
+  margin-top: 25px;
+  border-top: 1px solid #1f2937;
+  padding-top: 20px;
+}
+
+.top-filmes h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-filmes ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top-filmes li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.top-filmes li span {
+  width: 24px;
+  height: 24px;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #60a5fa; /* Números destacados em azul claro */
+}
+
+/* Destacar o primeiro lugar */
+.top-filmes li:first-child span {
+  background-color: rgba(251, 191, 36, 0.1);
+  border-color: #fbbf24;
+  color: #fbbf24; /* Ouro para o top 1 */
+}
+
+/* ==========================================================================
+   ANIMAÇÕES (Sincronizadas com o padrão de fade do login/cadastro)
+   ========================================================================== */
+.animar-escalar {
+  animation: escalarFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animar-subir {
+  animation: subirFadeIn 0.55s ease both;
+}
+
+.delay-2 { animation-delay: 0.15s; }
+.delay-3 { animation-delay: 0.25s; }
+/* ==========================================================================
+   STREAMVERSE — ADICIONAIS PARA COMPONENTE DE ESTATÍSTICAS STREAMING
+   ========================================================================== */
+
+/* Card de Progresso Personalizado */
+.stat-box-streaming {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 25px;
+  box-shadow: inset 0 0 12px rgba(96, 165, 250, 0.02), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label-streaming {
+  font-size: 15px;
+  color: #f1f5f9;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stat-label-streaming strong {
+  color: #60a5fa; /* Azul claro destacado para o tempo */
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.stat-descricao-streaming {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+/* Estrutura da Barra de Progresso */
+.barra-progresso-container {
+  width: 100%;
+  height: 6px;
+  background-color: #334155;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.barra-progresso-concluido {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
+}
+
+.stat-meta-streaming {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.stat-icones-streaming {
+  display: flex;
+  gap: 12px;
+  color: #475569;
+  font-size: 13px;
+}
+
+/* Seção Próximo na Fila (Mini Card) */
+.proximo-fila-container {
+  margin-bottom: 25px;
+}
+
+.subtitulo-streaming {
+  font-size: 13px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-proximo-fila {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* Mini Poster que simula a capa do filme */
+.mini-poster {
+  width: 55px;
+  height: 75px;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.mini-poster i {
+  font-size: 18px;
+  margin-bottom: 4px;
+  opacity: 0.6;
+}
+
+.mini-poster-tag {
+  font-size: 8px;
+  font-weight: 800;
+  color: #ffffff;
+  background-color: rgba(37, 99, 235, 0.85);
+  padding: 2px 0;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  letter-spacing: 0.5px;
+}
+
+.mini-poster-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.status-texto {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.filme-titulo-streaming {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Ícone de Fogo para as Tendências */
+.icone-fogo {
+  color: #f97316; /* Laranja vibrante para o fogo */
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+@keyframes escalarFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes subirFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Quebra de Layout adaptada para Mobile e Tablet)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .layout-principal {
+    grid-template-columns: 1fr; /* Barra lateral desce para baixo da grade */
+  }
+  
+  .destaque {
+    padding: 40px;
+  }
+  
+  .destaque-titulo {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 20px 12px;
+  }
+  
+  .destaque {
+    padding: 30px 20px;
+  }
+  
+  .destaque-acoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-primario, .btn-secundario {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .banner-numero-fundo {
+    font-size: 130px;
+    bottom: -20px;
+    right: -10px;
+  }
+}

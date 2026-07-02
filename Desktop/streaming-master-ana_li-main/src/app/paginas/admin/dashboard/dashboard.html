@@ -1,0 +1,115 @@
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <h2>🎬 Admin Filmes</h2>
+
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Filmes</a>
+      <a href="#">Categorias</a>
+      <a href="#">Usuários</a>
+      <a href="#">Configurações</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <header class="topbar">
+      <h1>Painel Administrativo</h1>
+
+      <a routerLink="/admin/create" class="btn-primario">
+        <i class="fas fa-plus"></i>
+        Novo Filme
+      </a>
+    </header>
+
+    <section class="cards">
+
+      <div class="card">
+        <h3>120</h3>
+        <p>Filmes</p>
+      </div>
+
+      <div class="card">
+        <h3>15</h3>
+        <p>Categorias</p>
+      </div>
+
+      <div class="card">
+        <h3>980</h3>
+        <p>Usuários</p>
+      </div>
+
+    </section>
+
+    <section class="table-section">
+
+      <h2>Filmes Recentes</h2>
+
+      @if(isLoading()){
+
+      <div class="loading">
+        Carregando dados...
+      </div>
+
+      } @else {
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Ano</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(item of artigos(); track item.id){
+
+          <tr>
+
+            <td>{{item.titulo}}</td>
+
+            <td>{{item.genero}}</td>
+
+            <td>{{item.ano_lancamento}}</td>
+
+            <td>
+              <span class="nota">
+                ⭐ {{item.nota}}
+              </span>
+            </td>
+
+            <td class="acoes">
+
+              <button
+                class="btn-excluir"
+                (click)="deleteArtigo(item.id)">
+
+                Excluir
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+      }
+
+    </section>
+
+  </main>
+
+</div>

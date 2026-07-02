@@ -1,0 +1,326 @@
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:host{
+    display:block;
+    min-height:100vh;
+    background:#0f172a; /* Alterado para o fundo escuro do Dashboard */
+    color:#fff;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.sv-inner{
+    position:relative;
+    z-index:1;
+    max-width:1400px;
+    margin:auto;
+    padding:30px 60px;
+}
+
+/* NAVBAR */
+.sv-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.sv-logo{
+    text-decoration:none;
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.sv-logo span:last-child{
+    color:#60a5fa; /* Azul claro de destaque do Dashboard */
+}
+
+.sv-nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.sv-nav-links a{
+    color:#cbd5e1; /* Cinza azulado claro para textos */
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sv-nav-links a:hover{
+    color:#60a5fa; /* Azul claro no hover */
+}
+
+.sv-nav-actions{
+    display:flex;
+    gap:15px;
+}
+
+.sv-btn-ghost{
+    color:white;
+    border:1px solid #334155; /* Borda no padrão do Dashboard */
+    padding:12px 24px;
+    border-radius:30px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sv-btn-ghost:hover{
+    background:#1e293b;
+}
+
+.sv-btn-primary{
+    background:#2563eb; /* Azul royal do botão do Dashboard */
+    color:white; /* Mudado de preto para branco pelo contraste */
+    padding:12px 24px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.sv-btn-primary:hover{
+    background:#1d4ed8;
+}
+
+/* HERO */
+
+.sv-hero{
+    max-width:700px;
+    margin-top:140px;
+}
+
+.sv-hero-badge{
+    display:inline-block;
+    background:rgba(96, 165, 250, 0.1); /* Fundo azul translúcido */
+    padding:10px 18px;
+    border-radius:30px;
+    color:#60a5fa; /* Azul claro de destaque */
+    margin-bottom:25px;
+    border:1px solid #1e293b;
+}
+
+.sv-hero h1{
+    font-size:5rem;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.accent{
+    color:#60a5fa; /* Azul claro de destaque */
+}
+
+.sv-hero p{
+    color:#94a3b8; /* Cor do texto secundário do Dashboard */
+    font-size:1.2rem;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.sv-hero-cta{
+    display:flex;
+    gap:20px;
+}
+
+.sv-btn-cta{
+    background:#2563eb; /* Azul royal do Dashboard */
+    color:white; /* Mudado de preto para branco */
+    padding:18px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.sv-btn-cta:hover{
+    background:#1d4ed8;
+}
+
+.sv-btn-cta-outline{
+    border:1px solid #334155; /* Borda padrão do Dashboard */
+    color:white;
+    padding:18px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sv-btn-cta-outline:hover{
+    border-color:#60a5fa; /* Azul claro na borda no hover */
+    background:rgba(96, 165, 250, 0.05); /* Leve brilho de fundo no hover */
+}
+/* ==========================================================================
+   SEÇÃO DE PLANOS
+   ========================================================================== */
+   .planos-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  
+  .planos-cabecalho {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .planos-cabecalho h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .planos-cabecalho p {
+    font-size: 18px;
+    color: #94a3b8;
+  }
+  
+  .planos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: center; /* Centraliza verticalmente para o card de destaque ficar maior */
+  }
+  
+  /* ESTILO BASE DO CARD */
+  .plano-card {
+    background-color: rgba(17, 24, 39, 0.6);
+    border: 1px solid #1f2937;
+    border-radius: 20px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .plano-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+  }
+  
+  /* CARD DE DESTAQUE (Família) */
+  .plano-card.destaque {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    border: 2px solid #4361ee; /* O azul vibrante da sua imagem */
+    padding: 50px 30px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(67, 97, 238, 0.2);
+  }
+  
+  .tag-popular {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4361ee;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  /* TEXTOS E PREÇOS */
+  .plano-header {
+    border-bottom: 1px solid #1f2937;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+  
+  .plano-header h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .plano-preco {
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .moeda { font-size: 16px; margin-top: 5px; margin-right: 4px; }
+  .valor { font-size: 48px; font-weight: bold; line-height: 1; }
+  .centavos { font-size: 16px; margin-top: 5px; }
+  .periodo { font-size: 16px; color: #94a3b8; align-self: flex-end; margin-bottom: 6px; margin-left: 4px; }
+  
+  .plano-descricao {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* LISTA DE RECURSOS */
+  .plano-recursos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex-grow: 1;
+  }
+  
+  .plano-recursos li {
+    color: #cbd5e1;
+    font-size: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .plano-recursos i {
+    color: #4361ee; /* Cor do ícone de check */
+    margin-top: 3px;
+  }
+  
+  /* BOTÕES DE ASSINATURA */
+  .btn-plano-primario, .btn-plano-secundario {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+  }
+  
+  .btn-plano-primario {
+    background-color: #4361ee;
+    color: white;
+  }
+  
+  .btn-plano-primario:hover {
+    background-color: #3b50df;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+  }
+  
+  .btn-plano-secundario {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #475569;
+  }
+  
+  .btn-plano-secundario:hover {
+    background-color: #1e293b;
+    border-color: white;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .planos-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .plano-card.destaque {
+      padding: 40px 30px;
+    }
+  }

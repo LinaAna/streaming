@@ -1,0 +1,231 @@
+/* ==========================================================================
+   BASE DO LAYOUT (Cores e Estrutura Principal)
+   ========================================================================== */
+   .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #0f172a;
+    min-height: 100vh;
+    color: #f1f5f9; /* Garante que o texto base seja claro */
+  }
+  
+  .layout-principal {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 30px;
+    align-items: start;
+    margin-top: 35px;
+  }
+  
+  /* ==========================================================================
+     CABEÇALHO DA LISTA (O Destaque)
+     ========================================================================== */
+  .destaque {
+    position: relative;
+    background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+  
+  .destaque-conteudo {
+    position: relative;
+    max-width: 600px;
+    z-index: 2;
+  }
+  
+  .tag-exclusivo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(37, 99, 235, 0.15); /* Azul sutil */
+    color: #60a5fa;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  
+  .destaque-titulo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  
+  .destaque-descricao {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  
+  .banner-numero-fundo {
+    position: absolute;
+    color: rgba(37, 99, 235, 0.04);
+    user-select: none;
+    z-index: 1;
+  }
+  
+  /* AJUSTES ESPECÍFICOS PARA O CABEÇALHO DA MINHA LISTA */
+  .cabecalho-lista {
+    padding: 40px 60px;
+    margin-bottom: 25px;
+  }
+  
+  .cabecalho-lista .destaque-titulo {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .cabecalho-lista .destaque-descricao {
+    margin-bottom: 0;
+  }
+  
+  .cabecalho-lista .banner-numero-fundo {
+    bottom: -30px;
+    right: 10px;
+    font-size: 150px;
+  }
+  
+  /* ==========================================================================
+     BARRA DE FILTROS
+     ========================================================================== */
+  .generos {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .generos::-webkit-scrollbar { height: 4px; }
+  .generos::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+  
+  .tag-genero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  
+  .tag-genero:hover { border-color: #60a5fa; color: white; }
+  .tag-genero.ativo {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+  
+  /* ==========================================================================
+     GRADE DE FILMES
+     ========================================================================== */
+  .grade-filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+  }
+  
+  app-movie { display: block; }
+  
+  /* ==========================================================================
+     BARRA LATERAL (ESTATÍSTICAS DA LISTA)
+     ========================================================================== */
+  .estatisticas {
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  .estatisticas-titulo {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo novo da barra de streaming */
+  .stat-box-streaming, .stat-box {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-label-streaming, .stat-label {
+    font-size: 14px;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .stat-label-streaming strong, .stat-valor {
+    color: #60a5fa;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Top Filmes da Lista Lateral */
+  .top-filmes { margin-top: 25px; border-top: 1px solid #1f2937; padding-top: 20px; }
+  .top-filmes h4 { font-size: 14px; font-weight: 600; color: #cbd5e1; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+  .top-filmes ul { list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0; }
+  .top-filmes li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: white; font-weight: 500; }
+  .top-filmes li span {
+    width: 24px; height: 24px;
+    background-color: #1e293b; border: 1px solid #334155; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #60a5fa;
+  }
+  
+  /* ==========================================================================
+     ANIMAÇÕES
+     ========================================================================== */
+  .animar-escalar { animation: escalarFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animar-subir { animation: subirFadeIn 0.55s ease both; }
+  .delay-2 { animation-delay: 0.15s; }
+  .delay-3 { animation-delay: 0.25s; }
+  
+  @keyframes escalarFadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes subirFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* ==========================================================================
+     RESPONSIVIDADE
+     ========================================================================== */
+  @media (max-width: 992px) {
+    .layout-principal { grid-template-columns: 1fr; }
+  }
+  
+  @media (max-width: 576px) {
+    .container { padding: 20px 12px; }
+    .cabecalho-lista { padding: 25px 20px; }
+  }
