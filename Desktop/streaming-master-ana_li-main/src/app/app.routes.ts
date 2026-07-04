@@ -7,6 +7,7 @@ import { Inicio } from './paginas/auth/inicio/inicio';
 import { Movie } from './shared/movie/movie';
 import { Dashboard } from './paginas/admin/dashboard/dashboard';
 import { MovieForm } from './paginas/admin/movie-form/movie-form';
+
 import { guardGuard } from './core/guards/guard-guard';
 import { Perfis } from './pages/perfis/perfis';
 import { MinhaLista } from './paginas/minhalista/minhalista';
@@ -25,10 +26,9 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: Dashboard },
       { path: 'create', component: MovieForm },
-      { path: 'edit/:id', component: Movie },
+     
     ],
   },
-
   {
     path: 'perfis',
     component: Perfis,

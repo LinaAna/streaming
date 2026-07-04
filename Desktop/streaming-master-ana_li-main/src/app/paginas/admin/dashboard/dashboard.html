@@ -1,115 +1,188 @@
-<div class="dashboard">
+<div class="sv-bg-glow"></div>
+<div class="sv-bg-glow2"></div>
 
-  <aside class="sidebar">
-    <h2>🎬 Admin Filmes</h2>
+<div class="sv-dashboard">
+  <aside class="sv-sidebar">
+    <div class="sv-sidebar-header">
+      <a href="#" class="sv-logo">
+        <span>Faça </span><span>parte!</span>
+      </a>
+    </div>
 
-    <nav>
-      <a href="#">Dashboard</a>
-      <a href="#">Filmes</a>
-      <a href="#">Categorias</a>
-      <a href="#">Usuários</a>
-      <a href="#">Configurações</a>
+    <nav class="sv-sidebar-nav">
+      <a href="#" class="sv-nav-item sv-nav-active">
+        <i class="ti ti-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="sv-nav-item">
+        <i class="ti ti-movie"></i>
+        <span>Filmes</span>
+      </a>
+      <a href="#" class="sv-nav-item">
+        <i class="ti ti-category"></i>
+        <span>Categorias</span>
+      </a>
+      <a href="#" class="sv-nav-item">
+        <i class="ti ti-users"></i>
+        <span>Usuários</span>
+      </a>
+      <a href="#" class="sv-nav-item">
+        <i class="ti ti-settings"></i>
+        <span>Configurações</span>
+      </a>
     </nav>
+
+    <div class="sv-sidebar-footer">
+      <a routerLink="/" class="sv-nav-item">
+        <i class="ti ti-logout"></i>
+        <span>Sair</span>
+      </a>
+    </div>
   </aside>
 
-  <main class="content">
+  <main class="sv-content">
+    <header class="sv-topbar">
+      <div>
+        <h1 class="sv-topbar-title">Painel Administrativo</h1>
+        <p class="sv-topbar-subtitle">Gerencie filmes, categorias e usuários</p>
+      </div>
 
-    <header class="topbar">
-      <h1>Painel Administrativo</h1>
-
-      <a routerLink="/admin/create" class="btn-primario">
-        <i class="fas fa-plus"></i>
+      <a routerLink="/admin/create" class="sv-btn-primary">
+        <i class="ti ti-plus"></i>
         Novo Filme
       </a>
     </header>
 
-    <section class="cards">
-
-      <div class="card">
-        <h3>120</h3>
-        <p>Filmes</p>
+    <section class="sv-stats">
+      <div class="sv-stat-card">
+        <div class="sv-stat-icon">
+          <i class="ti ti-movie"></i>
+        </div>
+        <div class="sv-stat-info">
+          <span class="sv-stat-value">120</span>
+          <span class="sv-stat-label">Filmes</span>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>15</h3>
-        <p>Categorias</p>
+      <div class="sv-stat-card">
+        <div class="sv-stat-icon sv-icon-purple">
+          <i class="ti ti-category"></i>
+        </div>
+        <div class="sv-stat-info">
+          <span class="sv-stat-value">15</span>
+          <span class="sv-stat-label">Categorias</span>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>980</h3>
-        <p>Usuários</p>
+      <div class="sv-stat-card">
+        <div class="sv-stat-icon sv-icon-green">
+          <i class="ti ti-users"></i>
+        </div>
+        <div class="sv-stat-info">
+          <span class="sv-stat-value">980</span>
+          <span class="sv-stat-label">Usuários</span>
+        </div>
       </div>
 
+      <div class="sv-stat-card">
+        <div class="sv-stat-icon sv-icon-orange">
+          <i class="ti ti-star"></i>
+        </div>
+        <div class="sv-stat-info">
+          <span class="sv-stat-value">4.8</span>
+          <span class="sv-stat-label">Avaliação média</span>
+        </div>
+      </div>
     </section>
 
-    <section class="table-section">
+    <section class="sv-table-section">
+      <div class="sv-table-header">
+        <div>
+          <h2 class="sv-table-title">Filmes Recentes</h2>
+          <p class="sv-table-subtitle">Lista completa de filmes cadastrados</p>
+        </div>
 
-      <h2>Filmes Recentes</h2>
+        <div class="sv-table-search">
+          <i class="ti ti-search"></i>
+          <input type="text" placeholder="Buscar filme..." />
+        </div>
+      </div>
 
       @if(isLoading()){
-
-      <div class="loading">
-        Carregando dados...
-      </div>
-
+        <div class="sv-loading">
+          <div class="sv-spinner"></div>
+          <p>Carregando filmes...</p>
+        </div>
+      } @else if (artigos().length === 0) {
+        <div class="sv-empty">
+          <i class="ti ti-movie-off"></i>
+          <h3>Nenhum filme cadastrado</h3>
+          <p>Comece adicionando seu primeiro filme</p>
+          <a routerLink="/admin/create" class="sv-btn-primary">
+            <i class="ti ti-plus"></i>
+            Adicionar filme
+          </a>
+        </div>
       } @else {
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Título</th>
-            <th>Categoria</th>
-            <th>Ano</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          @for(item of artigos(); track item.id){
-
-          <tr>
-
-            <td>{{item.titulo}}</td>
-
-            <td>{{item.genero}}</td>
-
-            <td>{{item.ano_lancamento}}</td>
-
-            <td>
-              <span class="nota">
-                ⭐ {{item.nota}}
-              </span>
-            </td>
-
-            <td class="acoes">
-
-              <button
-                class="btn-excluir"
-                (click)="deleteArtigo(item.id)">
-
-                Excluir
-
-              </button>
-
-            </td>
-
-          </tr>
-
-          }
-
-        </tbody>
-
-      </table>
-
+        <div class="sv-table-wrapper">
+          <table class="sv-table">
+            <thead>
+              <tr>
+                <th>Filme</th>
+                <th>Gênero</th>
+                <th>Ano</th>
+                <th>Nota</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(item of artigos(); track item.id){
+                <tr>
+                  <td>
+                    <div class="sv-movie-cell">
+                      <div class="sv-movie-thumb">
+                        <i class="ti ti-photo"></i>
+                      </div>
+                      <div class="sv-movie-info">
+                        <span class="sv-movie-title">{{ item.titulo }}</span>
+                        <span class="sv-movie-id">ID #{{ item.id }}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="sv-badge">{{ item.genero }}</span>
+                  </td>
+                  <td>
+                    <span class="sv-muted">{{ item.ano_lancamento }}</span>
+                  </td>
+                  <td>
+                    <span class="sv-rating">
+                      <i class="ti ti-star-filled"></i>
+                      {{ item.nota }}
+                    </span>
+                  </td>
+                  <td>
+                    <div class="sv-actions">
+                      <button
+                        class="sv-action-btn sv-btn-edit"
+                        (click)="editArtigo(item.id)"
+                        title="Editar">
+                        <i class="ti ti-edit"></i>
+                      </button>
+                      <button
+                        class="sv-action-btn sv-btn-delete"
+                        (click)="deleteArtigo(item.id)"
+                        title="Excluir">
+                        <i class="ti ti-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
       }
-
     </section>
-
   </main>
-
 </div>

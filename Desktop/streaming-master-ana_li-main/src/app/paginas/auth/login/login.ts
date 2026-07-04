@@ -1,46 +1,71 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
-
   private authService = inject(AuthService);
   private router = inject(Router);
 
   estaCarregando = signal(false);
+  
+  // ✅ ADICIONE ESTA LINHA - Signal para controlar visibilidade da senha
+  mostrarSenha = signal(false);
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  onSubmit() {
-    if (!this.loginForm.valid) {
+  // ✅ ADICIONE ESTE MÉTODO - Toggle do olho
+  toggleVisibilidadeSenha(): void {
+    this.mostrarSenha.update(v => !v);
+  }
+
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     this.estaCarregando.set(true);
 
+    // ⚠️ TEMPORÁRIO - Aceita qualquer credencial para teste
     const { email, password } = this.loginForm.getRawValue();
 
-    this.authService.login(email ?? '', password ?? '').subscribe({
+    // Simula login bem-sucedido SEM chamar a API
+    setTimeout(() => {
+      // Salva um token falso no localStorage (para o guard permitir acesso)
+      localStorage.setItem('auth_token', 'temporario-para-teste');
+      
+      alert('✅ Login temporário ativado! (Modo desenvolvimento)');
+      this.estaCarregando.set(false);
+      this.router.navigate(['/inicio']);
+    }, 800);
+
+    /* 
+    ⬇️ CÓDIGO ORIGINAL - Descomente quando tiver a senha da API
+    this.authService.login(
+      email ?? '',
+      password ?? ''
+    ).subscribe({
       next: () => {
-        this.estaCarregando.set(false);
         alert('Login efetuado com sucesso!');
-        // ajuste a rota conforme seu projeto
-        this.router.navigate(['/admin/dashboard']);
+        this.estaCarregando.set(false);
+        this.router.navigate(['/inicio']);
       },
       error: () => {
         this.estaCarregando.set(false);
-        alert('Usuário ou senha inválidos');
-      }
+        alert('Credenciais inválidas');
+      },
     });
+    */
   }
 }

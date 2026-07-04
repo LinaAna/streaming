@@ -1,9 +1,28 @@
-/* STREAMVERSE — PÁGINA DE CADASTRO (Cores sincronizadas com o Dashboard)
-*/
+/* ==========================================================================
+   RESET E BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* FUNDO ANIMADO (GRID DECORATIVO) - Ajustado para o azul do botão do dashboard
-*/
-.bg-grid {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a;
+  color: #ffffff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   STREAMVERSE — PÁGINA DE CADASTRO (Cores sincronizadas com o Dashboard)
+   ========================================================================== */
+
+/* FUNDO ANIMADO (GRID DECORATIVO) - Ajustado para o azul do botão do dashboard */
+.cd-bg-grid {
   position: fixed;
   inset: 0;
   background-image:
@@ -14,9 +33,8 @@
   z-index: 0;
 }
 
-/* ESTRUTURA DA PÁGINA
-*/
-.page-wrapper {
+/* ESTRUTURA DA PÁGINA */
+.cd-page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,13 +45,12 @@
   z-index: 1;
 }
 
-/* CABEÇALHO / LOGO
-*/
-.site-header {
+/* CABEÇALHO / LOGO */
+.cd-site-header {
   margin-bottom: 40px;
 }
 
-.logo {
+.cd-logo {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 30px;
   font-weight: 700;
@@ -42,21 +59,22 @@
   transition: opacity 0.3s;
 }
 
-.logo:hover {
+.cd-logo:hover {
   opacity: 0.85;
 }
 
-.logo-next {
+.cd-logo-next {
   color: #fff; /* Branco igual aos títulos */
 }
 
-.logo-movie {
+.cd-logo-movie {
   color: #60a5fa; /* Azul claro dos títulos de cards */
 }
 
-/* CARD DO FORMULÁRIO - Ajustado para as cores do sidebar e topbar (#111827)
-*/
-.card {
+/* ==========================================================================
+   CARD DO FORMULÁRIO - Ajustado para as cores do sidebar e topbar (#111827)
+   ========================================================================== */
+.cd-card {
   background-color: rgba(17, 24, 39, 0.9); /* Mesma cor do sidebar/topbar com opacidade */
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -65,15 +83,15 @@
   padding: 40px;
   width: 100%;
   max-width: 460px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 60px rgba(37, 99, 235, 0.05);
-  animation: subirFadeIn 0.55s ease both;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 60px rgba(37, 99, 235, 0.05);
+  animation: cdSubirFadeIn 0.55s ease both;
 }
 
-.card-header {
+.cd-card-header {
   margin-bottom: 32px;
 }
 
-.card-title {
+.cd-card-title {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 26px;
   font-weight: 700;
@@ -83,42 +101,44 @@
   margin-bottom: 6px;
 }
 
-.card-subtitle {
+.cd-card-subtitle {
   font-size: 14px;
   color: #94a3b8; /* Cinza suave dos parágrafos */
   line-height: 1.5;
 }
 
-/* GRUPOS DE CAMPO
-*/
-.field-group {
+/* ==========================================================================
+   GRUPOS DE CAMPO
+   ========================================================================== */
+.cd-field-group {
   display: flex;
   flex-direction: column;
   gap: 7px;
   margin-bottom: 18px;
 }
 
-.field-group--check {
+.cd-field-group--check {
   gap: 5px;
   margin-bottom: 22px;
 }
 
-.field-label {
+.cd-field-label {
   font-size: 13px;
   font-weight: 500;
   color: #cbd5e1; /* Texto secundário */
   letter-spacing: 0.1px;
 }
 
-/* INPUTS - Ajustados para a cor de fundo das tabelas/cards (#1e293b e #334155)
-*/
-.input-wrapper {
+/* ==========================================================================
+   INPUTS - Ajustados para a cor de fundo das tabelas/cards (#1e293b e #334155)
+   ========================================================================== */
+.cd-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.input-icon {
+.cd-input-icon {
   position: absolute;
   left: 14px;
   color: #94a3b8;
@@ -128,11 +148,11 @@
   z-index: 1;
 }
 
-.input-wrapper:focus-within .input-icon {
+.cd-input-wrapper:focus-within .cd-input-icon {
   color: #60a5fa; /* Foca com o azul claro */
 }
 
-.input-field {
+.cd-input-field {
   width: 100%;
   background-color: #1e293b; /* Fundo dos cards do dashboard */
   border: 1px solid #334155; /* Borda dos cards do dashboard */
@@ -148,33 +168,35 @@
   appearance: none;
 }
 
-.input-field::placeholder {
+.cd-input-field::placeholder {
   color: #94a3b8;
   opacity: 0.6;
 }
 
-.input-field:hover {
+.cd-input-field:hover {
   border-color: #cbd5e1;
 }
 
-.input-field:focus {
+.cd-input-field:focus {
   border-color: #2563eb; /* Azul primário ao focar */
   background-color: #1e293b;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.input-field.error {
+.cd-input-field.error {
   border-color: #ef4444; /* Vermelho do botão de excluir */
   background-color: rgba(239, 68, 68, 0.05);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
-.input-field.success {
+.cd-input-field.success {
   border-color: #10b981;
 }
 
-/* Botão olho (mostrar/ocultar senha) */
-.toggle-password {
+/* ==========================================================================
+   BOTÃO OLHO (MOSTRAR/OCULTAR SENHA)
+   ========================================================================== */
+.cd-toggle-password {
   position: absolute;
   right: 12px;
   background: none;
@@ -184,40 +206,49 @@
   cursor: pointer;
   padding: 5px;
   line-height: 1;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.2s;
   z-index: 1;
 }
 
-.toggle-password:hover {
+.cd-toggle-password:hover {
   color: #60a5fa;
+  transform: scale(1.1);
 }
 
-/* BARRA DE FORÇA DA SENHA
-*/
-.strength-bar {
+.cd-toggle-password:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   BARRA DE FORÇA DA SENHA
+   ========================================================================== */
+.cd-strength-bar {
   height: 3px;
   background-color: #334155;
   border-radius: 2px;
   overflow: hidden;
+  margin-top: 8px;
 }
 
-.strength-fill {
+.cd-strength-fill {
   height: 100%;
   width: 0%;
   border-radius: 2px;
   transition: width 0.35s ease, background-color 0.35s ease;
 }
 
-.strength-label {
+.cd-strength-label {
   font-size: 11px;
   color: #94a3b8;
   min-height: 15px;
   letter-spacing: 0.2px;
+  margin-top: 4px;
 }
 
-/* MENSAGENS DE ERRO
-*/
-.error-msg {
+/* ==========================================================================
+   MENSAGENS DE ERRO
+   ========================================================================== */
+.cd-error-msg {
   font-size: 12px;
   color: #ef4444;
   min-height: 16px;
@@ -227,9 +258,10 @@
   line-height: 1.4;
 }
 
-/* CHECKBOX PERSONALIZADO
-*/
-.checkbox-label {
+/* ==========================================================================
+   CHECKBOX PERSONALIZADO
+   ========================================================================== */
+.cd-checkbox-label {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -237,14 +269,14 @@
   user-select: none;
 }
 
-.checkbox-input {
+.cd-checkbox-input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.checkbox-custom {
+.cd-checkbox-custom {
   flex-shrink: 0;
   width: 18px;
   height: 18px;
@@ -259,7 +291,7 @@
   position: relative;
 }
 
-.checkbox-custom::after {
+.cd-checkbox-custom::after {
   content: '';
   width: 5px;
   height: 9px;
@@ -269,36 +301,42 @@
   transition: transform 0.2s ease;
 }
 
-.checkbox-input:checked + .checkbox-custom {
+.cd-checkbox-input:checked + .cd-checkbox-custom {
   background-color: #2563eb; /* Azul primário */
   border-color: #2563eb;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.45);
 }
 
-.checkbox-input:checked + .checkbox-custom::after {
+.cd-checkbox-input:checked + .cd-checkbox-custom::after {
   transform: rotate(45deg) scale(1) translateY(-1px);
 }
 
-.checkbox-text {
+.cd-checkbox-label:hover .cd-checkbox-custom {
+  border-color: #60a5fa;
+}
+
+.cd-checkbox-text {
   font-size: 13px;
   color: #cbd5e1;
   line-height: 1.55;
 }
 
-.link-terms {
+.cd-link-terms {
   color: #60a5fa;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s, text-decoration 0.3s;
 }
 
-.link-terms:hover {
+.cd-link-terms:hover {
   color: #2563eb;
   text-decoration: underline;
 }
 
-/* BOTÃO DE CRIAR CONTA - Mesma cor e hover do botão azul do topo do dashboard
-*/
-.btn-submit {
+/* ==========================================================================
+   BOTÃO DE CRIAR CONTA - Mesma cor e hover do botão azul do topo do dashboard
+   ========================================================================== */
+.cd-btn-submit {
   width: 100%;
   display: flex;
   align-items: center;
@@ -318,41 +356,71 @@
   margin-top: 4px;
 }
 
-.btn-submit:hover {
+.cd-btn-submit:hover {
   background-color: #1d4ed8; /* Hover azul escuro do dashboard */
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
-.btn-submit:active {
+.cd-btn-submit:active {
   transform: translateY(0);
   box-shadow: none;
 }
 
-/* LINK DE LOGIN
-*/
-.login-link {
+.cd-btn-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Estado loading */
+.cd-btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd-btn-spinner {
+  display: none;
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(37, 99, 235, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: cdSpin 0.65s linear infinite;
+}
+
+.cd-btn-submit:disabled .cd-btn-spinner {
+  display: block;
+}
+
+/* ==========================================================================
+   LINK DE LOGIN
+   ========================================================================== */
+.cd-login-link {
   text-align: center;
   margin-top: 22px;
   font-size: 13px;
   color: #94a3b8;
 }
 
-.link-login {
+.cd-link-login {
   color: #60a5fa;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.link-login:hover {
+.cd-link-login:hover {
   color: #2563eb;
   text-decoration: underline;
 }
 
-/* TOAST DE SUCESSO - Baseado nas tabelas escuras
-*/
-.toast {
+/* ==========================================================================
+   TOAST DE SUCESSO - Baseado nas tabelas escuras
+   ========================================================================== */
+.cd-toast {
   position: fixed;
   bottom: 28px;
   left: 50%;
@@ -366,7 +434,7 @@
   gap: 10px;
   font-size: 14px;
   color: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
   opacity: 0;
   z-index: 200;
@@ -374,21 +442,22 @@
   pointer-events: none;
 }
 
-.toast.show {
+.cd-toast.show {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-.toast-icon {
+.cd-toast-icon {
   color: #10b981;
   font-size: 18px;
   flex-shrink: 0;
 }
 
-/* FUNDO DE FILMES (ADAPTADO)
-*/
-.movie-background {
+/* ==========================================================================
+   FUNDO DE FILMES (ADAPTADO)
+   ========================================================================== */
+.cd-movie-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -404,8 +473,8 @@
   z-index: -2;
 }
 
-/* Eefeito escurecedor ajustado para misturar com o tom escuro do painel */
-.movie-overlay {
+/* Efeito escurecedor ajustado para misturar com o tom escuro do painel */
+.cd-movie-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -415,7 +484,42 @@
   z-index: -1;
 }
 
-@keyframes subirFadeIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 500px) {
+  .cd-card {
+    padding: 28px 20px;
+    border-radius: 10px;
+  }
+
+  .cd-card-title {
+    font-size: 22px;
+  }
+
+  .cd-toast {
+    white-space: normal;
+    max-width: calc(100vw - 40px);
+    bottom: 16px;
+  }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES
+   ========================================================================== */
+@keyframes cdSubirFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cdSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }

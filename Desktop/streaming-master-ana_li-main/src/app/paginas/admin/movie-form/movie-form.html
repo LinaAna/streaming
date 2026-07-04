@@ -1,91 +1,126 @@
-<div class="form-page">
-  <div class="form-container">
+<div class="sv-bg-glow"></div>
+<div class="sv-bg-glow2"></div>
 
-    <div class="form-header">
-      <a routerLink="/painelAdmin" class="btn-voltar">
-        <i class="fas fa-arrow-left"></i>
+<div class="sv-form-page">
+  <div class="sv-form-container">
+    <div class="sv-form-header">
+      <a routerLink="/painelAdmin" class="sv-btn-back">
+        <i class="ti ti-arrow-left"></i>
       </a>
-      <div>
-        <h1>Novo Filme</h1>
-        <p>Preencha os dados do filme abaixo</p>
+      <div class="sv-form-title">
+        <div class="sv-form-badge">
+          <i class="ti ti-movie"></i>
+          {{ isEditMode ? 'Editar' : 'Novo' }}
+        </div>
+        <h1>{{ isEditMode ? 'Editar Filme' : 'Novo Filme' }}</h1>
+        <p>{{ isEditMode ? 'Atualize os dados do filme' : 'Preencha os dados para cadastrar um novo filme' }}</p>
       </div>
     </div>
 
-    <form class="form" [formGroup]="artigoForm" (ngSubmit)="onSubmit()">
-
-      <div class="form-group">
-        <label for="titulo">Título</label>
-        <input 
-          id="titulo" 
-          type="text" 
-          placeholder="Ex: Interestelar" 
-          formControlName="titulo"/>
+    <form class="sv-form" [formGroup]="artigoForm" (ngSubmit)="onSubmit()">
+      <div class="sv-form-group">
+        <label for="titulo">
+          <i class="ti ti-heading"></i>
+          Título <span class="sv-required">*</span>
+        </label>
+        <input
+          id="titulo"
+          type="text"
+          placeholder="Ex: Interestelar"
+          formControlName="titulo" />
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="genero">Gênero</label>
-          <select id="genero" formControlName="genero">
-            <option value="">Selecione...</option>
-            <option value="Ação">Ação</option>
-            <option value="Drama">Drama</option>
-            <option value="Comédia">Comédia</option>
-            <option value="Terror">Terror</option>
-            <option value="Ficção">Ficção Científica</option>
-            <option value="Animação">Animação</option>
-            <option value="Documentário">Documentário</option>
-          </select>
+      <div class="sv-form-row">
+        <div class="sv-form-group">
+          <label for="genero">
+            <i class="ti ti-category"></i>
+            Gênero <span class="sv-required">*</span>
+          </label>
+          <div class="sv-select-wrapper">
+            <select id="genero" formControlName="genero">
+              <option value="">Selecione...</option>
+              <option value="Ação">Ação</option>
+              <option value="Drama">Drama</option>
+              <option value="Comédia">Comédia</option>
+              <option value="Terror">Terror</option>
+              <option value="Ficção Científica">Ficção Científica</option>
+              <option value="Animação">Animação</option>
+              <option value="Documentário">Documentário</option>
+            </select>
+            <i class="ti ti-chevron-down sv-select-icon"></i>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="ano">Ano de Lançamento</label>
-          <input 
-            id="ano" 
-            type="number" 
-            placeholder="Ex: 2024" 
-            min="1900" 
-            max="2099" 
-            formControlName="ano_lancamento"/>
+        <div class="sv-form-group">
+          <label for="ano">
+            <i class="ti ti-calendar"></i>
+            Ano <span class="sv-required">*</span>
+          </label>
+          <input
+            id="ano"
+            type="number"
+            placeholder="Ex: 2024"
+            min="1900"
+            max="2099"
+            formControlName="ano_lancamento" />
         </div>
 
-        <div class="form-group">
-          <label for="nota">Nota</label>
-          <input 
-            id="nota" 
-            type="number" 
-            placeholder="0.0 - 10.0" 
-            min="0" 
-            max="10" 
-            step="0.1" 
-            formControlName="nota"/>
+        <div class="sv-form-group">
+          <label for="nota">
+            <i class="ti ti-star"></i>
+            Nota <span class="sv-required">*</span>
+          </label>
+          <input
+            id="nota"
+            type="number"
+            placeholder="0.0 - 10.0"
+            min="0"
+            max="10"
+            step="0.1"
+            formControlName="nota" />
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="imagem">URL da Imagem (Poster)</label>
-        <input 
-          id="imagem" 
-          type="text" 
-          placeholder="https://linkdaimagem.com/poster.jpg" 
-          formControlName="imagem_url"
-        />
+      <div class="sv-form-group">
+        <label for="imagem">
+          <i class="ti ti-photo"></i>
+          URL da Imagem (Poster)
+        </label>
+        <input
+          id="imagem"
+          type="text"
+          placeholder="https://linkdaimagem.com/poster.jpg"
+          formControlName="imagem_url" />
       </div>
 
-      <div class="form-group">
-        <label for="descricao">Descrição</label>
-        <textarea 
-          id="descricao" 
-          rows="4" 
-          placeholder="Sinopse do filme..."
-          formControlName="descricao"></textarea> </div>
+      <div class="sv-form-group sv-file-group">
+        <label for="file">
+          <i class="ti ti-upload"></i>
+          Upload de Imagem (Opcional)
+        </label>
+        <div class="sv-file-input">
+          <input
+            id="file"
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)" />
+          <div class="sv-file-placeholder">
+            <i class="ti ti-cloud-upload"></i>
+            <span>{{ selectedFile ? selectedFile.name : 'Clique para selecionar' }}</span>
+          </div>
+        </div>
+      </div>
 
-      <div class="form-actions">
-        <a routerLink="/painelAdmin" class="btn-cancelar">Cancelar</a>
-        <button type="submit" class="btn-salvar">
-          <i class="fas fa-save"></i> Salvar Filme
+      <div class="sv-form-actions">
+        <a routerLink="/painelAdmin" class="sv-btn-cancel">
+          <i class="ti ti-x"></i>
+          Cancelar
+        </a>
+        <button type="submit" class="sv-btn-submit">
+          <i class="ti {{ isEditMode ? 'ti-check' : 'ti-device-floppy' }}"></i>
+          {{ isEditMode ? 'Atualizar Filme' : 'Salvar Filme' }}
         </button>
       </div>
-
     </form>
   </div>
 </div>

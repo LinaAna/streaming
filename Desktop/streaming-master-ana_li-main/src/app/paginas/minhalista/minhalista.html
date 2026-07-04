@@ -1,54 +1,75 @@
-<main class="container">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVerse - Minha Lista</title>
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="minhalista.css">
+</head>
+<body>
 
-    <section class="destaque cabecalho-lista animar-escalar">
-        <div class="destaque-conteudo animar-subir delay-2">
-            <span class="tag-exclusivo"><i class="fas fa-bookmark"></i> Espaço Pessoal</span>
-            <h1 class="destaque-titulo">Minha Lista</h1>
-            <p class="destaque-descricao">Gerencie os títulos que você salvou para assistir depois, seus favoritos e os
-                filmes que já concluiu.</p>
+  <main class="ml-container">
+
+    <section class="ml-destaque ml-cabecalho-lista ml-animar-escalar">
+      <div class="ml-destaque-conteudo ml-animar-subir ml-delay-2">
+        <span class="ml-tag-exclusivo"><i class="fas fa-bookmark"></i> Espaço Pessoal</span>
+        <h1 class="ml-destaque-titulo">Minha Lista</h1>
+        <p class="ml-destaque-descricao">Gerencie os títulos que você salvou para assistir depois, seus favoritos e os
+          filmes que já concluiu.</p>
+      </div>
+      <div class="ml-banner-numero-fundo"><i class="fas fa-film"></i></div>
+    </section>
+
+    <section class="ml-generos ml-animar-subir ml-delay-3">
+      <button class="ml-tag-genero ml-ativo">Todos Salvos</button>
+      <button class="ml-tag-genero"><i class="fas fa-heart"></i> Favoritos</button>
+      <button class="ml-tag-genero"><i class="fas fa-clock"></i> Assistir Mais Tarde</button>
+      <button class="ml-tag-genero"><i class="fas fa-check-circle"></i> Já Assistidos</button>
+    </section>
+
+    <div class="ml-layout-principal">
+
+      <section class="ml-grade-filmes">
+
+        @for (item of myListMovies(); track $index) {
+        <app-movie [data]="item"></app-movie>
+        }
+
+      </section>
+
+      <aside class="ml-estatisticas ml-animar-subir ml-delay-3">
+        <h3 class="ml-estatisticas-titulo"><i class="fas fa-user-circle"></i> Seu Perfil</h3>
+
+        <div class="ml-stat-box">
+          <span class="ml-stat-label"><i class="fas fa-list-ul"></i> Títulos na lista</span>
+          <span class="ml-stat-valor">24 filmes</span>
         </div>
-        <div class="banner-numero-fundo"><i class="fas fa-film"></i></div>
-    </section>
 
-    <section class="generos animar-subir delay-3">
-        <button class="tag-genero ativo">Todos Salvos</button>
-        <button class="tag-genero"><i class="fas fa-heart"></i> Favoritos</button>
-        <button class="tag-genero"><i class="fas fa-clock"></i> Assistir Mais Tarde</button>
-        <button class="tag-genero"><i class="fas fa-check-circle"></i> Já Assistidos</button>
-    </section>
+        <div class="ml-stat-box">
+          <span class="ml-stat-label"><i class="far fa-clock"></i> Tempo total assistido</span>
+          <span class="ml-stat-valor ml-destaque-texto">142 horas</span>
+        </div>
 
-    <div class="layout-principal">
-
-        <section class="grade-filmes">
-
-            @for (item of myListMovies(); track $index) {
-            <app-movie [data]="item"></app-movie>
-            }
-
-        </section>
-
-        <aside class="estatisticas animar-subir delay-3">
-            <h3 class="estatisticas-titulo"><i class="fas fa-user-circle"></i> Seu Perfil</h3>
-
-            <div class="stat-box">
-                <span class="stat-label"><i class="fas fa-list-ul"></i> Títulos na lista</span>
-                <span class="stat-valor">24 filmes</span>
-            </div>
-
-            <div class="stat-box">
-                <span class="stat-label"><i class="far fa-clock"></i> Tempo total assistido</span>
-                <span class="stat-valor destaque-texto">142 horas</span>
-            </div>
-
-            <div class="top-filmes">
-                <h4><i class="fas fa-history"></i> Adicionados Recentemente</h4>
-                <ul>
-                    <li><span><i class="fas fa-plus"></i></span> Interestelar</li>
-                    <li><span><i class="fas fa-plus"></i></span> Duna: Parte 2</li>
-                    <li><span><i class="fas fa-plus"></i></span> Oppenheimer</li>
-                </ul>
-            </div>
-        </aside>
+        <div class="ml-top-filmes">
+          <h4><i class="fas fa-history"></i> Adicionados Recentemente</h4>
+          <ul>
+            <li><span><i class="fas fa-plus"></i></span> Interestelar</li>
+            <li><span><i class="fas fa-plus"></i></span> Duna: Parte 2</li>
+            <li><span><i class="fas fa-plus"></i></span> Oppenheimer</li>
+          </ul>
+        </div>
+      </aside>
 
     </div>
-</main>
+  </main>
+
+</body>
+</html>

@@ -1,103 +1,177 @@
-<div class="sv-bg-glow"></div>
-<div class="sv-bg-glow2"></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faça parte! - Streaming</title>
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
 
-<div class="sv-inner">
+  <div class="sv-bg-glow"></div>
+  <div class="sv-bg-glow2"></div>
 
-  <nav class="sv-nav">
-    <a href="#" class="sv-logo">
-      <span>Faça </span><span>parte!</span>
-    </a>
+  <div class="sv-inner">
 
-    <div class="sv-nav-links">
-      <a href="#">Início</a>
-      <a href="#">Filmes</a>
-      <a href="#">Séries</a>
-      <a href="#">Ao vivo</a>
-      <a href="#">Minha lista</a>
-    </div>
-
-    <div class="sv-nav-actions">
-      <a routerLink="/login" class="sv-btn-ghost">Entrar</a>
-      <a routerLink="/cadastro" class="sv-btn-primary">Criar conta</a>
-    </div>
-  </nav>
-
-  <section class="sv-hero">
-    <div class="sv-hero-badge">
-      <i class="ti ti-bolt"></i>
-      Novo: Plano Família disponível
-    </div>
-
-    <h1>
-      O cinema na palma <br />
-      da sua <span class="accent">mão</span>
-    </h1>
-
-    <p>
-      Filmes, séries, documentários e muito mais.
-      Assista quando quiser, onde quiser, em qualquer dispositivo.
-    </p>
-
-    <div class="sv-hero-cta">
-      <a routerLink="/cadastro" class="sv-btn-cta">
-        <i class="ti ti-user-plus"></i>
-        Criar conta grátis
+    <nav class="sv-nav">
+      <a href="#" class="sv-logo">
+        <span>Faça </span><span>parte!</span>
       </a>
+    </nav>
 
-      <a href="#planos" class="sv-btn-cta-outline">
-        <i class="ti ti-player-play"></i>
-        Ver planos
-      </a>
-    </div>
-  </section>
-  <section class="planos-container" id="planos">
-    <div class="planos-cabecalho">
-      <h2>Escolha o plano perfeito para você</h2>
-      <p>Sem burocracia. Cancele quando quiser.</p>
-    </div>
-
-    <div class="planos-grid">
-
-      <div class="plano-card">
-        <div class="plano-header">
-          <h3>Básico</h3>
-          <div class="plano-preco">
-            <span class="moeda">R$</span>
-            <span class="valor">19</span>
-            <span class="centavos">,90</span>
-            <span class="periodo">/mês</span>
-          </div>
-          <p class="plano-descricao">Perfeito para quem assiste sozinho no celular ou tablet.</p>
-        </div>
-        <ul class="plano-recursos">
-          <li><i class="fas fa-check"></i> Qualidade de vídeo Boa (720p)</li>
-          <li><i class="fas fa-check"></i> Assista em 1 tela por vez</li>
-          <li><i class="fas fa-check"></i> Download para assistir offline</li>
-        </ul>
-        <button class="btn-plano-secundario">Assinar Básico</button>
+    <section class="sv-hero">
+      <div class="sv-hero-badge">
+        <i class="ti ti-bolt"></i>
+        Novo: Plano Família disponível
       </div>
 
-      <div class="plano-card destaque">
-        <div class="tag-popular">NOVO E MAIS POPULAR</div>
-        <div class="plano-header">
-          <h3>Família</h3>
-          <div class="plano-preco">
-            <span class="moeda">R$</span>
-            <span class="valor">49</span>
-            <span class="centavos">,90</span>
-            <span class="periodo">/mês</span>
-          </div>
-          <p class="plano-descricao">A melhor experiência para dividir com toda a casa.</p>
-        </div>
-        <ul class="plano-recursos">
-          <li><i class="fas fa-check"></i> Qualidade de vídeo 4K + HDR</li>
-          <li><i class="fas fa-check"></i> Assista em até 4 telas ao mesmo tempo</li>
-          <li><i class="fas fa-check"></i> Download em todos os dispositivos</li>
-          <li><i class="fas fa-check"></i> Perfis infantis exclusivos</li>
-        </ul>
-        <button class="btn-plano-primario">Assinar Família</button>
+      <h1>
+        O cinema na palma <br />
+        da sua <span class="sv-accent">mão</span>
+      </h1>
+
+      <p>
+        Filmes, séries, documentários e muito mais.
+        Assista quando quiser, onde quiser, em qualquer dispositivo.
+      </p>
+
+      <div class="sv-hero-cta">
+        <a routerLink="/cadastro" class="sv-btn-cta">
+          <i class="ti ti-user-plus"></i>
+          Criar conta grátis
+        </a>
+
+        <a href="#planos" class="sv-btn-cta-outline">
+          <i class="ti ti-player-play"></i>
+          Ver planos
+        </a>
+      </div>
+    </section>
+
+    <section class="sv-planos" id="planos">
+      <div class="sv-planos-header">
+        <h2>Escolha o plano perfeito para você</h2>
+        <p>Sem burocracia. Cancele quando quiser.</p>
       </div>
 
-    </div>
-  </section>
-</div>
+      <div class="sv-planos-grid">
+
+        <div class="sv-plano-card">
+          <div class="sv-plano-header">
+            <h3>Básico</h3>
+            <div class="sv-plano-preco">
+              <span class="sv-moeda">R$</span>
+              <span class="sv-valor">19</span>
+              <span class="sv-centavos">,90</span>
+              <span class="sv-periodo">/mês</span>
+            </div>
+            <p class="sv-plano-desc">Perfeito para quem assiste sozinho no celular ou tablet.</p>
+          </div>
+          <ul class="sv-plano-recursos">
+            <li><i class="fas fa-check"></i> Qualidade de vídeo Boa (720p)</li>
+            <li><i class="fas fa-check"></i> Assista em 1 tela por vez</li>
+            <li><i class="fas fa-check"></i> Download para assistir offline</li>
+          </ul>
+          <button class="sv-btn-plano-sec">Assinar Básico</button>
+        </div>
+
+        <div class="sv-plano-card sv-destaque">
+          <div class="sv-tag-popular">NOVO E MAIS POPULAR</div>
+          <div class="sv-plano-header">
+            <h3>Família</h3>
+            <div class="sv-plano-preco">
+              <span class="sv-moeda">R$</span>
+              <span class="sv-valor">49</span>
+              <span class="sv-centavos">,90</span>
+              <span class="sv-periodo">/mês</span>
+            </div>
+            <p class="sv-plano-desc">A melhor experiência para dividir com toda a casa.</p>
+          </div>
+          <ul class="sv-plano-recursos">
+            <li><i class="fas fa-check"></i> Qualidade de vídeo 4K + HDR</li>
+            <li><i class="fas fa-check"></i> Assista em até 4 telas ao mesmo tempo</li>
+            <li><i class="fas fa-check"></i> Download em todos os dispositivos</li>
+            <li><i class="fas fa-check"></i> Perfis infantis exclusivos</li>
+          </ul>
+          <button class="sv-btn-plano-pri">Assinar Família</button>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="sv-footer">
+      <div class="sv-footer-content">
+        
+        <div class="sv-footer-brand">
+          <a href="#" class="sv-logo-footer">
+            <span>Faça </span><span>parte!</span>
+          </a>
+          <p class="sv-footer-tagline">O cinema na palma da sua mão</p>
+          <div class="sv-footer-social">
+            <a href="#" class="sv-social-link" aria-label="Facebook">
+              <i class="ti ti-brand-facebook"></i>
+            </a>
+            <a href="#" class="sv-social-link" aria-label="Instagram">
+              <i class="ti ti-brand-instagram"></i>
+            </a>
+            <a href="#" class="sv-social-link" aria-label="Twitter">
+              <i class="ti ti-brand-twitter"></i>
+            </a>
+            <a href="#" class="sv-social-link" aria-label="YouTube">
+              <i class="ti ti-brand-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="sv-footer-links">
+          <div class="sv-footer-col">
+            <h4>Empresa</h4>
+            <ul>
+              <li><a href="#">Sobre nós</a></li>
+              <li><a href="#">Carreiras</a></li>
+              <li><a href="#">Imprensa</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="sv-footer-col">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="#">Central de ajuda</a></li>
+              <li><a href="#">Contato</a></li>
+              <li><a href="#">Dispositivos compatíveis</a></li>
+              <li><a href="#">Acessibilidade</a></li>
+            </ul>
+          </div>
+
+          <div class="sv-footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Termos de uso</a></li>
+              <li><a href="#">Política de privacidade</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">Diretrizes de conteúdo</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sv-footer-bottom">
+        <p>&copy; 2026 Faça parte! Todos os direitos reservados.</p>
+        <p>Feito com <i class="ti ti-heart-filled sv-heart"></i> para amantes de cinema</p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

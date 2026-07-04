@@ -1,27 +1,32 @@
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MovieModel } from '../models/movieModel';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class Streaming {
-  private readonly http = inject(HttpClient)
-  private readonly apiUrl = "https://api-senai-angular.vercel.app/api"
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:8080/filmes'; // Ajuste sua URL
 
-  getAll(): Observable<any> {
-    return this.http.get(this.apiUrl + "/streaming/movies")
-  }
-
-  create(formData: FormData): Observable<any>{
-    return this.http.post(this.apiUrl + "/streaming/movies", formData)
-  }
-  
-  update(formData: FormData, id: any): Observable<any>{
-  return this.http.put(this.apiUrl + "/streaming/movies/" + id, formData)
-  }
-  delete(id: any): Observable<any>{
-  return this.http.delete(this.apiUrl + "/streaming/movies/" + id)
+  getAll(): Observable<MovieModel[]> {
+    return this.http.get<MovieModel[]>(this.apiUrl);
   }
 
+  getById(id: number): Observable<MovieModel> {
+    return this.http.get<MovieModel>(`${this.apiUrl}/${id}`);
+  }
+
+  create(data: FormData): Observable<MovieModel> {
+    return this.http.post<MovieModel>(this.apiUrl, data);
+  }
+
+  update(id: number, data: FormData): Observable<MovieModel> {
+    return this.http.put<MovieModel>(`${this.apiUrl}/${id}`, data);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

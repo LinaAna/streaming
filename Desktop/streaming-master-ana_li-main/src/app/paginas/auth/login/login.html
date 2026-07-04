@@ -1,121 +1,143 @@
-<!-- Fundo animado decorativo -->
-<div class="movie-background"></div>
-<div class="movie-overlay"></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faça seu login - StreamVerse</title>
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
 
-<div class="bg-grid" aria-hidden="true"></div>
+  <!-- Fundo animado decorativo -->
+  <div class="lg-movie-background"></div>
+  <div class="lg-movie-overlay"></div>
+  <div class="lg-bg-grid" aria-hidden="true"></div>
 
-<main class="page-wrapper">
+  <main class="lg-page-wrapper">
 
-  <!-- Logo -->
-  <header class="site-header">
-    <a href="#" class="logo" aria-label="StreamVerse – página inicial">
-      <span class="logo-next">Faça seu </span><span class="logo-movie">login.</span>
-    </a>
-  </header>
+    <!-- Logo -->
+    <header class="lg-site-header">
+      <a href="#" class="lg-logo" aria-label="StreamVerse – página inicial">
+        <span class="lg-logo-next">Faça seu </span><span class="lg-logo-movie">login.</span>
+      </a>
+    </header>
 
-  <!-- Card de Login -->
-  <section class="card" aria-labelledby="form-title">
+    <!-- Card de Login -->
+    <section class="lg-card" aria-labelledby="form-title">
 
-    <div class="card-header">
-      <h1 id="form-title" class="card-title">Entrar</h1>
-      <p class="card-subtitle">Acesse sua conta e continue assistindo.</p>
-    </div>
+      <div class="lg-card-header">
+        <h1 id="form-title" class="lg-card-title">Entrar</h1>
+        <p class="lg-card-subtitle">Acesse sua conta e continue assistindo.</p>
+      </div>
 
-    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form class="lg-login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-      <!-- Campo: E-mail -->
-      <div class="field-group" id="group-email">
-        <label for="email" class="field-label">E-mail</label>
-        <div class="input-wrapper">
-          <i class="fa-solid fa-envelope input-icon" aria-hidden="true"></i>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="input-field"
-            placeholder="seu@email.com"
-            autocomplete="email"
-            aria-describedby="error-email"
-            aria-required="true"
-            formControlName="email"
-          />
+        <!-- Campo: E-mail -->
+        <div class="lg-field-group" id="group-email">
+          <label for="email" class="lg-field-label">E-mail</label>
+          <div class="lg-input-wrapper">
+            <i class="fa-solid fa-envelope lg-input-icon" aria-hidden="true"></i>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="lg-input-field"
+              placeholder="seu@email.com"
+              autocomplete="email"
+              aria-describedby="error-email"
+              aria-required="true"
+              formControlName="email"
+            />
+          </div>
+          <span class="lg-error-msg" id="error-email" role="alert" aria-live="polite"></span>
         </div>
-        <span class="error-msg" id="error-email" role="alert" aria-live="polite"></span>
-      </div>
 
-      <!-- Campo: Senha -->
-      <div class="field-group" id="group-password">
-        <label for="password" class="field-label">Senha</label>
-        <div class="input-wrapper">
-          <i class="fa-solid fa-lock input-icon" aria-hidden="true"></i>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="input-field"
-            placeholder="Digite sua senha"
-            autocomplete="current-password"
-            aria-describedby="error-password"
-            aria-required="true"
-            formControlName="password"
-
-          />
-          <button
-            type="button"
-            class="toggle-password"
-            aria-label="Mostrar senha"
-            data-target="password"
-          >
-            <i class="fa-solid fa-eye" aria-hidden="true"></i>
-          </button>
+        <!-- Campo: Senha -->
+        <div class="lg-field-group" id="group-password">
+          <label for="password" class="lg-field-label">Senha</label>
+          <div class="lg-input-wrapper">
+            <i class="fa-solid fa-lock lg-input-icon" aria-hidden="true"></i>
+            <input
+              [type]="mostrarSenha() ? 'text' : 'password'"
+              id="password"
+              name="password"
+              class="lg-input-field"
+              placeholder="Digite sua senha"
+              autocomplete="current-password"
+              aria-describedby="error-password"
+              aria-required="true"
+              formControlName="password"
+            />
+            <button
+              type="button"
+              class="lg-toggle-password"
+              (click)="toggleVisibilidadeSenha()"
+              [attr.aria-label]="mostrarSenha() ? 'Ocultar senha' : 'Mostrar senha'"
+            >
+              <i 
+                [class]="mostrarSenha() ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'" 
+                aria-hidden="true">
+              </i>
+            </button>
+          </div>
+          <span class="lg-error-msg" id="error-password" role="alert" aria-live="polite"></span>
         </div>
-        <span class="error-msg" id="error-password" role="alert" aria-live="polite"></span>
-      </div>
 
-      <!-- Opções (lembrar-me)-->
-      <div class="login-options">
-        <label class="checkbox-label">
-          <input type="checkbox" class="checkbox-input">
-          <span class="checkbox-custom"></span>
-          <span class="checkbox-text">Lembrar-me</span>
-        </label>
+        <!-- Opções (lembrar-me) -->
+        <div class="lg-login-options">
+          <label class="lg-checkbox-label">
+            <input type="checkbox" class="lg-checkbox-input">
+            <span class="lg-checkbox-custom"></span>
+            <span class="lg-checkbox-text">Lembrar-me</span>
+          </label>
 
-        <a href="#" class="forgot-password">
-          Esqueceu a senha?
-        </a>
-      </div>
+          <a href="#" class="lg-forgot-password">
+            Esqueceu a senha?
+          </a>
+        </div>
 
- <!-- Botão -->
-<button
-  type="submit"
-  class="btn-submit"
-  id="btn-submit"
-  [disabled]="estaCarregando()">
+        <!-- Botão -->
+        <button
+          type="submit"
+          class="lg-btn-submit"
+          id="btn-submit"
+          [disabled]="estaCarregando()">
 
-  @if (estaCarregando()) {
-    <span class="btn-text">Entrando...</span>
-    <span class="btn-spinner" aria-hidden="true"></span>
-  } @else {
-    <span class="btn-text">
-      Entrar na conta <i class="fas fa-sign-in-alt"></i>
-    </span>
-  }
+          @if (estaCarregando()) {
+            <span class="lg-btn-text">Entrando...</span>
+            <span class="lg-btn-spinner" aria-hidden="true"></span>
+          } @else {
+            <span class="lg-btn-text">
+              Entrar na conta <i class="fas fa-sign-in-alt"></i>
+            </span>
+          }
 
-</button>
-    </form>
+        </button>
+      </form>
 
-    <!-- Link para cadastro -->
-    <p class="login-link">
-      Não possui uma conta?
-      <a href="#" class="link-login">Criar conta</a>
-    </p>
+      <!-- Link para cadastro -->
+      <p class="lg-login-link">
+        Não possui uma conta?
+        <a routerLink="/cadastro" class="lg-link-login">Criar conta</a>
+      </p>
 
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<!-- Toast -->
-<div class="toast" id="toast" role="status" aria-live="assertive" aria-atomic="true">
-  <i class="fa-solid fa-circle-check toast-icon" aria-hidden="true"></i>
-  <span>Login realizado com sucesso!</span>
-</div>
+  <!-- Toast -->
+  <div class="lg-toast" id="toast" role="status" aria-live="assertive" aria-atomic="true">
+    <i class="fa-solid fa-circle-check lg-toast-icon" aria-hidden="true"></i>
+    <span>Login realizado com sucesso!</span>
+  </div>
+
+</body>
+</html>

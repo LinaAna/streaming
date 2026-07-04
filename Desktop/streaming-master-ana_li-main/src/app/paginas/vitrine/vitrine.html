@@ -1,89 +1,109 @@
-<main class="container">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVerse - Catálogo</title>
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="vitrine.css">
+</head>
+<body>
 
-  <!-- BANNER HERO PRINCIPAL DE DESTAQUE -->
-  <section class="destaque animar-escalar">
-    <div class="destaque-conteudo animar-subir delay-2">
-      <span class="tag-exclusivo"><i class="fas fa-crown"></i> Exclusivo</span>
-      <h1 class="destaque-titulo">O Silêncio das Águas</h1>
-      <p class="destaque-descricao">Em um futuro distópico, a última colônia humana luta para sobreviver em uma
-        plataforma oceânica misteriosa. Descubra os segredos escondidos nas profundezas.</p>
-      <div class="destaque-acoes">
-        <button class="btn-primario"><i class="fas fa-play"></i> Assistir Agora</button>
-        <button class="btn-secundario"><i class="fas fa-info-circle"></i> Mais Informações</button>
+  <main class="vt-container">
+
+    <!-- BANNER HERO PRINCIPAL DE DESTAQUE -->
+    <section class="vt-destaque vt-animar-escalar">
+      <div class="vt-destaque-conteudo vt-animar-subir vt-delay-2">
+        <span class="vt-tag-exclusivo"><i class="fas fa-crown"></i> Exclusivo</span>
+        <h1 class="vt-destaque-titulo">O Silêncio das Águas</h1>
+        <p class="vt-destaque-descricao">Em um futuro distópico, a última colônia humana luta para sobreviver em uma
+          plataforma oceânica misteriosa. Descubra os segredos escondidos nas profundezas.</p>
+        <div class="vt-destaque-acoes">
+          <button class="vt-btn-primario"><i class="fas fa-play"></i> Assistir Agora</button>
+          <button class="vt-btn-secundario"><i class="fas fa-info-circle"></i> Mais Informações</button>
+        </div>
       </div>
-    </div>
-    <!-- Marca d'água colossal no fundo decorativo -->
-    <div class="banner-numero-fundo">2026</div>
-  </section>
-
-  <!-- BARRA DE FILTROS / GÊNEROS -->
-  <section class="generos animar-subir delay-3">
-    <button class="tag-genero ativo">Todos</button>
-    <button class="tag-genero"><i class="fas fa-gun"></i> Ação</button>
-    <button class="tag-genero"><i class="fas fa-theater-masks"></i> Drama</button>
-    <button class="tag-genero"><i class="fas fa-face-laugh-beam"></i> Comédia</button>
-    <button class="tag-genero"><i class="fas fa-user-astronaut"></i> Ficção Científica</button>
-    <button class="tag-genero"><i class="fas fa-camera-retro"></i> Documentários</button>
-  </section>
-
-  <!-- LAYOUT PRINCIPAL: GRADE + ASIDE -->
-  <div class="layout-principal">
-
-    <!-- GRADE DE FILMES -->
-    <section class="grade-filmes">
-
-      @for (item of movies(); track $index) {
-      <app-movie [data]="item"></app-movie>
-      }
-
-
+      <!-- Marca d'água colossal no fundo decorativo -->
+      <div class="vt-banner-numero-fundo">2026</div>
     </section>
 
-    <!-- BARRA LATERAL (ESTATÍSTICAS DA SEMANA) -->
-    <aside class="estatisticas animar-subir delay-3">
-      <h3 class="estatisticas-titulo"><i class="fas fa-user-clock"></i> Sua Semana StreamVerse</h3>
+    <!-- BARRA DE FILTROS / GÊNEROS -->
+    <section class="vt-generos vt-animar-subir vt-delay-3">
+      <button class="vt-tag-genero vt-ativo">Todos</button>
+      <button class="vt-tag-genero"><i class="fas fa-gun"></i> Ação</button>
+      <button class="vt-tag-genero"><i class="fas fa-theater-masks"></i> Drama</button>
+      <button class="vt-tag-genero"><i class="fas fa-face-laugh-beam"></i> Comédia</button>
+      <button class="vt-tag-genero"><i class="fas fa-user-astronaut"></i> Ficção Científica</button>
+      <button class="vt-tag-genero"><i class="fas fa-camera-retro"></i> Documentários</button>
+    </section>
 
-      <div class="stat-box-streaming">
-        <span class="stat-label-streaming">Tempo de Tela: <strong>15h</strong></span>
-        <p class="stat-descricao-streaming">Você assistiu a 15 horas de conteúdo esta semana!</p>
+    <!-- LAYOUT PRINCIPAL: GRADE + ASIDE -->
+    <div class="vt-layout-principal">
 
-        <div class="barra-progresso-container">
-          <div class="barra-progresso-concluido" style="width: 75%;"></div>
-        </div>
+      <!-- GRADE DE FILMES -->
+      <section class="vt-grade-filmes">
 
-        <div class="stat-meta-streaming">
-          <span>15h / sugestão semanal!</span>
-          <span>20h</span>
-        </div>
+        @for (item of movies(); track $index) {
+        <app-movie [data]="item"></app-movie>
+        }
 
-        <div class="stat-icones-streaming">
-          <i class="fas fa-desktop" title="Computador"></i>
-          <i class="fas fa-mobile-alt" title="Telemóvel"></i>
-        </div>
-      </div>
+      </section>
 
-      <div class="proximo-fila-container">
-        <h4 class="subtitulo-streaming"><i class="fas fa-play-circle"></i> Próximo na Fila</h4>
-        <div class="card-proximo-fila">
-          <div class="mini-poster">
-            <i class="fas fa-user-astronaut"></i>
-            <span class="mini-poster-tag">NEBULOSA</span>
+      <!-- BARRA LATERAL (ESTATÍSTICAS DA SEMANA) -->
+      <aside class="vt-estatisticas vt-animar-subir vt-delay-3">
+        <h3 class="vt-estatisticas-titulo"><i class="fas fa-user-clock"></i> Sua Semana StreamVerse</h3>
+
+        <div class="vt-stat-box-streaming">
+          <span class="vt-stat-label-streaming">Tempo de Tela: <strong>15h</strong></span>
+          <p class="vt-stat-descricao-streaming">Você assistiu a 15 horas de conteúdo esta semana!</p>
+
+          <div class="vt-barra-progresso-container">
+            <div class="vt-barra-progresso-concluido" style="width: 75%;"></div>
           </div>
-          <div class="mini-poster-detalhes">
-            <span class="status-texto">Termine de assistir:</span>
-            <span class="filme-titulo-streaming">Nebulosa</span>
+
+          <div class="vt-stat-meta-streaming">
+            <span>15h / sugestão semanal!</span>
+            <span>20h</span>
+          </div>
+
+          <div class="vt-stat-icones-streaming">
+            <i class="fas fa-desktop" title="Computador"></i>
+            <i class="fas fa-mobile-alt" title="Telemóvel"></i>
           </div>
         </div>
-      </div>
 
-      <div class="top-filmes">
-        <h4><i class="fas fa-fire"></i> Tendências para Você</h4>
-        <ul>
-          <li><span>1</span> Nebulosa <i class="fas fa-fire icone-fogo"></i></li>
-          <li><span>2</span> O Silêncio das Águas</li>
-          <li><span>3</span> Ecos do Passado</li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
+        <div class="vt-proximo-fila-container">
+          <h4 class="vt-subtitulo-streaming"><i class="fas fa-play-circle"></i> Próximo na Fila</h4>
+          <div class="vt-card-proximo-fila">
+            <div class="vt-mini-poster">
+              <i class="fas fa-user-astronaut"></i>
+              <span class="vt-mini-poster-tag">NEBULOSA</span>
+            </div>
+            <div class="vt-mini-poster-detalhes">
+              <span class="vt-status-texto">Termine de assistir:</span>
+              <span class="vt-filme-titulo-streaming">Nebulosa</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vt-top-filmes">
+          <h4><i class="fas fa-fire"></i> Tendências para Você</h4>
+          <ul>
+            <li><span>1</span> Nebulosa <i class="fas fa-fire vt-icone-fogo"></i></li>
+            <li><span>2</span> O Silêncio das Águas</li>
+            <li><span>3</span> Ecos do Passado</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+</body>
+</html>

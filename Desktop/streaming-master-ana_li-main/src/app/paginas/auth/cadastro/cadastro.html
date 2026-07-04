@@ -1,161 +1,225 @@
-<!-- Fundo animado decorativo -->
-<div class="movie-background"></div>
-<div class="movie-overlay"></div>
-<div class="bg-grid" aria-hidden="true"></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta - StreamVerse</title>
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
 
-<main class="page-wrapper">
+  <!-- Fundo animado decorativo -->
+  <div class="cd-movie-background"></div>
+  <div class="cd-movie-overlay"></div>
+  <div class="cd-bg-grid" aria-hidden="true"></div>
 
-  <!-- Logo -->
-  <header class="site-header">
-    <a href="#" class="logo" aria-label="StreamVerse – página inicial">
-      <span class="logo-next">Faça </span><span class="logo-movie">parte!</span>
-    </a>
-  </header>
+  <main class="cd-page-wrapper">
 
-  <!-- Card -->
-<!--    -->
-   <section class="card" aria-labelledby="form-title">
+    <!-- Logo -->
+    <header class="cd-site-header">
+      <a href="#" class="cd-logo" aria-label="StreamVerse – página inicial">
+        <span class="cd-logo-next">Faça </span><span class="cd-logo-movie">parte!</span>
+      </a>
+    </header>
 
-    <div class="card-header">
-      <h1 id="form-title" class="card-title">Criar sua conta</h1>
-      <p class="card-subtitle">Assista a tudo, em qualquer lugar.</p>
-    </div>
+    <!-- Card -->
+    <section class="cd-card" aria-labelledby="form-title">
 
-    <form class="cadastro-form" [formGroup]="cadastroForm"
-      (ngSubmit)="onSubmit()">
-
-      <!-- Campo: Nome completo -->
-      <div class="field-group" id="group-name">
-        <label for="fullname" class="field-label">Nome completo</label>
-        
-        <div class="input-wrapper">
-          <i class="fa-solid fa-user input-icon" aria-hidden="true"></i>
-          <input
-            type="text"
-            id="fullname"
-            name="fullname"
-            class="input-field"
-            placeholder="Seu nome completo"
-            autocomplete="name"
-            aria-describedby="error-name"
-            aria-required="true"
-            formControlName="name"
-          />
-        </div>
-        <span class="error-msg" id="error-name" role="alert" aria-live="polite"></span>
+      <div class="cd-card-header">
+        <h1 id="form-title" class="cd-card-title">Criar sua conta</h1>
+        <p class="cd-card-subtitle">Assista a tudo, em qualquer lugar.</p>
       </div>
 
-      <!-- Campo: E-mail -->
-      <div class="field-group" id="group-email">
-        <label for="email" class="field-label">E-mail</label>
-        <div class="input-wrapper">
-          <i class="fa-solid fa-envelope input-icon" aria-hidden="true"></i>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="input-field"
-            placeholder="seu@email.com"
-            autocomplete="email"
-            aria-describedby="error-email"
-            aria-required="true"
-            formControlName="email"
-          />
-        </div>
-        <span class="error-msg" id="error-email" role="alert" aria-live="polite"></span>
-      </div>
+      <form class="cd-cadastro-form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
 
-      <!-- Campo: Senha -->
-      <div class="field-group" id="group-password">
-        <label for="password" class="field-label">Senha</label>
-        <div class="input-wrapper">
-          <i class="fa-solid fa-lock input-icon" aria-hidden="true"></i>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="input-field"
-            placeholder="Mínimo 8 caracteres"
-            autocomplete="new-password"
-            aria-describedby="error-password"
-            aria-required="true"
-            formControlName="password"
-          />
-          <button
-            type="button"
-            class="toggle-password"
-            aria-label="Mostrar senha"
-            data-target="password">
-            <i class="fa-solid fa-eye" aria-hidden="true"></i>
-          </button>
-        </div>
-
-        <div class="strength-bar" aria-hidden="true">
-          <div class="strength-fill" id="strength-fill"></div>
-        </div>
-
-        <span class="strength-label" id="strength-label" aria-live="polite"></span>
-        <span class="error-msg" id="error-password" role="alert" aria-live="polite"></span>
-      </div>
-
-      <!-- Checkbox: Termos -->
-      <div class="field-group field-group--check" id="group-terms">
-        <label class="checkbox-label">
-          <input
-            type="checkbox"
-            id="terms"
-            name="terms"
-            class="checkbox-input"
-            aria-describedby="error-terms"
-          />
-          <span class="checkbox-custom" aria-hidden="true"></span>
-          <span class="checkbox-text">
-            Aceito os
-            <a href="#" class="link-terms">termos de uso</a>
-            e a
-            <a href="#" class="link-terms">política de privacidade</a>
+        <!-- Campo: Nome completo -->
+        <div class="cd-field-group" id="group-name">
+          <label for="fullname" class="cd-field-label">Nome completo</label>
+          
+          <div class="cd-input-wrapper">
+            <i class="fa-solid fa-user cd-input-icon" aria-hidden="true"></i>
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              class="cd-input-field"
+              placeholder="Seu nome completo"
+              autocomplete="name"
+              aria-describedby="error-name"
+              aria-required="true"
+              formControlName="name"
+            />
+          </div>
+          <span class="cd-error-msg" id="error-name" role="alert" aria-live="polite">
+            @if (cadastroForm.get('name')?.touched && cadastroForm.get('name')?.invalid) {
+              @if (cadastroForm.get('name')?.errors?.['required']) {
+                Nome é obrigatório.
+              }
+              @if (cadastroForm.get('name')?.errors?.['minlength']) {
+                Nome deve ter pelo menos 3 caracteres.
+              }
+            }
           </span>
-        </label>
-        <span class="error-msg" id="error-terms" role="alert" aria-live="polite"></span>
-      </div>
+        </div>
 
-       <!-- Botão -->
-<button
-  type="submit"
-  class="btn-submit"
-  id="btn-submit"
-  [disabled]="estaCarregando()">
+        <!-- Campo: E-mail -->
+        <div class="cd-field-group" id="group-email">
+          <label for="email" class="cd-field-label">E-mail</label>
+          <div class="cd-input-wrapper">
+            <i class="fa-solid fa-envelope cd-input-icon" aria-hidden="true"></i>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="cd-input-field"
+              placeholder="seu@email.com"
+              autocomplete="email"
+              aria-describedby="error-email"
+              aria-required="true"
+              formControlName="email"
+            />
+          </div>
+          <span class="cd-error-msg" id="error-email" role="alert" aria-live="polite">
+            @if (cadastroForm.get('email')?.touched && cadastroForm.get('email')?.invalid) {
+              @if (cadastroForm.get('email')?.errors?.['required']) {
+                E-mail é obrigatório.
+              }
+              @if (cadastroForm.get('email')?.errors?.['email']) {
+                Digite um e-mail válido.
+              }
+            }
+          </span>
+        </div>
 
-  @if (estaCarregando()) {
-    <span class="btn-text">Entrando...</span>
-    <span class="btn-spinner" aria-hidden="true"></span>
-  } @else {
-    <span class="btn-text">
-      Entrar na conta <i class="fas fa-sign-in-alt"></i>
-    </span>
-  }
+        <!-- Campo: Senha -->
+        <div class="cd-field-group" id="group-password">
+          <label for="password" class="cd-field-label">Senha</label>
+          <div class="cd-input-wrapper">
+            <i class="fa-solid fa-lock cd-input-icon" aria-hidden="true"></i>
+            <input
+              [type]="estaVisivelSenha() ? 'text' : 'password'"
+              id="password"
+              name="password"
+              class="cd-input-field"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="new-password"
+              aria-describedby="error-password"
+              aria-required="true"
+              formControlName="password"
+              (input)="verificarForcaSenha()"
+            />
+            <button
+              type="button"
+              class="cd-toggle-password"
+              (click)="toggleVisibilidadeSenha()"
+              [attr.aria-label]="estaVisivelSenha() ? 'Ocultar senha' : 'Mostrar senha'">
+              <i 
+                [class]="estaVisivelSenha() ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'" 
+                aria-hidden="true">
+              </i>
+            </button>
+          </div>
 
-</button>
+          <!-- Barra de força -->
+          <div class="cd-strength-bar" aria-hidden="true">
+            <div 
+              class="cd-strength-fill" 
+              [style.width]="forcaSenha().largura" 
+              [style.backgroundColor]="forcaSenha().cor"
+              style="transition: all 0.3s ease;">
+            </div>
+          </div>
 
-    </form>
+          <span class="cd-strength-label" aria-live="polite">
+            {{ forcaSenha().texto }}
+          </span>
 
-    <!-- Link para login -->
-    <p class="login-link">
-      Já possui uma conta?
-      <a href="#" class="link-login">Entrar</a>
-    </p>
+          <span class="cd-error-msg" id="error-password" role="alert" aria-live="polite">
+            @if (cadastroForm.get('password')?.touched && cadastroForm.get('password')?.invalid) {
+              @if (cadastroForm.get('password')?.errors?.['required']) {
+                Senha é obrigatória.
+              }
+              @if (cadastroForm.get('password')?.errors?.['minlength']) {
+                Senha deve ter pelo menos 8 caracteres.
+              }
+            }
+          </span>
+        </div>
 
-  </section>
+        <!-- Checkbox: Termos -->
+        <div class="cd-field-group cd-field-group--check" id="group-terms">
+          <label class="cd-checkbox-label">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              class="cd-checkbox-input"
+              formControlName="terms"
+              aria-describedby="error-terms"
+            />
+            <span class="cd-checkbox-custom" aria-hidden="true"></span>
+            <span class="cd-checkbox-text">
+              Aceito os
+              <a href="#" class="cd-link-terms">termos de uso</a>
+              e a
+              <a href="#" class="cd-link-terms">política de privacidade</a>
+            </span>
+          </label>
+          <span class="cd-error-msg" id="error-terms" role="alert" aria-live="polite">
+            @if (cadastroForm.get('terms')?.touched && cadastroForm.get('terms')?.invalid) {
+              Você precisa aceitar os termos.
+            }
+          </span>
+        </div>
 
-</main>
+        <!-- Botão -->
+        <button
+          type="submit"
+          class="cd-btn-submit"
+          id="btn-submit"
+          [disabled]="cadastroForm.invalid || estaCarregando()">
 
-<!-- Toast -->
-<div
-  class="toast"
-  id="toast"
-  role="status"
-  aria-live="assertive"
-  aria-atomic="true">
-  <i class="fa-solid fa-circle-check toast-icon" aria-hidden="true"></i>
-  <span>Conta criada com sucesso! Bem-vindo(a) ao StreamVerse.</span>
-</div>
+          @if (estaCarregando()) {
+            <span class="cd-btn-text">Criando conta...</span>
+            <span class="cd-btn-spinner" aria-hidden="true"></span>
+          } @else {
+            <span class="cd-btn-text">
+              Criar conta <i class="fas fa-user-plus"></i>
+            </span>
+          }
+
+        </button>
+
+      </form>
+
+      <!-- Link para login -->
+      <p class="cd-login-link">
+        Já possui uma conta?
+        <a routerLink="/login" class="cd-link-login">Entrar</a>
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- Toast -->
+  <div
+    class="cd-toast"
+    id="toast"
+    role="status"
+    aria-live="assertive"
+    aria-atomic="true">
+    <i class="fa-solid fa-circle-check cd-toast-icon" aria-hidden="true"></i>
+    <span>Conta criada com sucesso! Bem-vindo(a) ao StreamVerse.</span>
+  </div>
+
+</body>
+</html>
