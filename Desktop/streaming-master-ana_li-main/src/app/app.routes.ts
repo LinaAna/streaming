@@ -26,7 +26,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: Dashboard },
       { path: 'create', component: MovieForm },
-     
+      { path: 'edit/:id', component: MovieForm }, 
     ],
   },
   {

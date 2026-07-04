@@ -6,6 +6,7 @@ import { MovieModel } from '../../../core/models/movieModel';
 
 @Component({
   selector: 'app-movie-form',
+  standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './movie-form.html',
   styleUrl: './movie-form.css',
@@ -20,7 +21,7 @@ export class MovieForm implements OnInit {
   movieId: number | null = null;
 
   artigoForm = new FormGroup({
-    titulo: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    titulo: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2)] }),
     genero: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     ano_lancamento: new FormControl<number | null>(null, [Validators.required]),
     nota: new FormControl<number | null>(null, [Validators.required]),
@@ -48,9 +49,10 @@ export class MovieForm implements OnInit {
           imagem_url: movie.imagem_url || '',
         });
       },
-      error: () => {
+      error: (err) => {
+        console.error('Erro ao carregar filme:', err);
         alert('Erro ao carregar dados do filme');
-        this.router.navigate(['/painelAdmin']);
+        this.router.navigate(['/admin/dashboard']);
       },
     });
   }
@@ -62,43 +64,52 @@ export class MovieForm implements OnInit {
 
   onSubmit(): void {
     if (this.artigoForm.invalid) {
-      alert('Preencha todos os campos obrigatórios');
+      alert('Preencha todos os campos obrigatórios corretamente');
+      this.artigoForm.markAllAsTouched();
       return;
     }
 
-    const formData = new FormData();
     const values = this.artigoForm.value;
+    
+    const movieData = {
+      titulo: values.titulo,
+      genero: values.genero,
+      ano_lancamento: values.ano_lancamento ? Number(values.ano_lancamento) : null,
+      nota: values.nota !== null && values.nota !== undefined ? Number(values.nota) : null,
+      imagem_url: values.imagem_url?.trim() || null
+    };
 
-    Object.entries(values).forEach(([key, value]) => {
-      if (value !== null && value !== undefined && value !== '') {
-        formData.append(key, String(value));
-      }
-    });
-
-    if (this.selectedFile) {
-      formData.append('imagem', this.selectedFile);
-    }
+    console.log('Enviando dados:', movieData);
 
     if (this.isEditMode && this.movieId) {
-      this.artigoService.update(this.movieId, formData).subscribe({
-        next: () => {
-          alert('Filme atualizado com sucesso!');
+      this.artigoService.update(this.movieId, movieData).subscribe({
+        next: (response) => {
+          console.log('Filme atualizado:', response);
+          alert('Filme updated com sucesso!');
           this.router.navigate(['/painelAdmin']);
         },
-        error: () => {
-          alert('Erro ao atualizar filme');
+        error: (err) => {
+          console.error('Erro ao atualizar filme:', err);
+          alert(`Erro ao atualizar filme: ${err.message || 'Tente novamente'}`);
         },
       });
-    } else {
-      this.artigoService.create(formData).subscribe({
-        next: () => {
+    } else { // Adicionado o comando "else" que faltava aqui
+      this.artigoService.create(movieData).subscribe({
+        next: (response) => {
+          console.log('Filme criado:', response);
           alert('Filme criado com sucesso!');
           this.router.navigate(['/painelAdmin']);
         },
-        error: () => {
-          alert('Erro ao criar filme');
+        error: (err) => {
+          console.error('Erro ao criar filme:', err);
+          const errorMessage = err.error?.message || err.error || err.message || 'Erro interno no servidor';
+          alert(`Erro ao criar filme: ${errorMessage}`);
         },
       });
     }
+  }
+
+  voltarDashboard(): void {
+    this.router.navigate(['/painelAdmin']);
   }
 }
