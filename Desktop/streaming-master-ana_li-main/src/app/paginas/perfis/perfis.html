@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVerse - Perfis</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Seu arquivo CSS -->
+  <link rel="stylesheet" href="perfis.css">
+</head>
+<body>
+
+  <main class="pf-container">
+
+    <!-- CABEÇALHO -->
+    <header class="pf-cabecalho pf-animar-subir">
+      <span class="pf-tag-exclusivo">
+        <i class="fas fa-user-circle"></i> Escolha seu perfil
+      </span>
+      <h1 class="pf-titulo">Quem está assistindo?</h1>
+      <p class="pf-descricao">Selecione um perfil para continuar sua jornada no StreamVerse.</p>
+    </header>
+
+    <!-- MARCA D'ÁGUA DECORATIVA -->
+    <div class="pf-marca-dagua">SV</div>
+
+    <!-- LISTA DE PERFIS -->
+    <section class="pf-lista-perfis pf-animar-escalar pf-delay-2">
+
+      <div class="pf-perfil pf-animar-subir" routerLink="/vitrine">
+        <div class="pf-avatar-wrapper">
+          <img src="https://i.pravatar.cc/200?img=1" alt="Avatar João">
+          <span class="pf-avatar-borda"></span>
+        </div>
+        <p class="pf-nome">João</p>
+        <span class="pf-status-ativo"><i class="fas fa-circle"></i> Online</span>
+      </div>
+
+      <div class="pf-perfil pf-animar-subir pf-delay-2" routerLink="/vitrine">
+        <div class="pf-avatar-wrapper">
+          <img src="https://i.pravatar.cc/200?img=2" alt="Avatar Maria">
+          <span class="pf-avatar-borda"></span>
+        </div>
+        <p class="pf-nome">Maria</p>
+        <span class="pf-status-ativo"><i class="fas fa-circle"></i> Online</span>
+      </div>
+
+      <div class="pf-perfil pf-animar-subir pf-delay-3" routerLink="/vitrine">
+        <div class="pf-avatar-wrapper">
+          <img src="https://i.pravatar.cc/200?img=3" alt="Avatar Convidado">
+          <span class="pf-avatar-borda"></span>
+        </div>
+        <p class="pf-nome">Convidado</p>
+        <span class="pf-status-ativo"><i class="fas fa-circle"></i> Online</span>
+      </div>
+
+      <!-- Adicionar Perfil -->
+      <div class="pf-perfil pf-perfil-adicionar pf-animar-subir pf-delay-3">
+        <div class="pf-avatar-wrapper">
+          <i class="fas fa-plus"></i>
+        </div>
+        <p class="pf-nome">Adicionar</p>
+        <span class="pf-status-ativo pf-status-neutro">Novo perfil</span>
+      </div>
+
+    </section>
+
+    <!-- RODAPÉ DE AÇÕES -->
+    <footer class="pf-rodape pf-animar-subir pf-delay-3">
+      <button class="pf-btn-secundario">
+        <i class="fas fa-cog"></i> Gerenciar Perfis
+      </button>
+    </footer>
+
+  </main>
+
+</body>
+</html>

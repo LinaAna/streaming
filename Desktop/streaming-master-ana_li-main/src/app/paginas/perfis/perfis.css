@@ -1,0 +1,361 @@
+/* ==========================================================================
+   RESET E BASE (Padronizado com Vitrine)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a;
+  color: #ffffff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL
+   ========================================================================== */
+.pf-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  background-color: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+.pf-cabecalho {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.pf-tag-exclusivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.pf-titulo {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.pf-descricao {
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   MARCA D'ÁGUA DECORATIVA
+   ========================================================================== */
+.pf-marca-dagua {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 420px;
+  font-weight: 900;
+  color: rgba(37, 99, 235, 0.04);
+  user-select: none;
+  z-index: 0;
+  pointer-events: none;
+  letter-spacing: -20px;
+}
+
+/* ==========================================================================
+   LISTA DE PERFIS
+   ========================================================================== */
+.pf-lista-perfis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 60px;
+}
+
+/* ==========================================================================
+   CARD DE PERFIL
+   ========================================================================== */
+.pf-perfil {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pf-perfil:hover {
+  transform: translateY(-8px);
+}
+
+.pf-perfil:hover .pf-avatar-borda {
+  border-color: #2563eb;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+}
+
+.pf-perfil:hover .pf-nome {
+  color: #60a5fa;
+}
+
+/* ==========================================================================
+   AVATAR
+   ========================================================================== */
+.pf-avatar-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pf-avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.pf-avatar-borda {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid #334155;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.pf-avatar-wrapper i {
+  font-size: 48px;
+  color: #60a5fa;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+}
+
+/* ==========================================================================
+   NOME E STATUS
+   ========================================================================== */
+.pf-nome {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.pf-status-ativo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pf-status-ativo i {
+  font-size: 8px;
+  animation: pfPulsar 2s ease-in-out infinite;
+}
+
+.pf-status-neutro {
+  color: #94a3b8;
+}
+
+.pf-status-neutro i {
+  display: none;
+}
+
+/* ==========================================================================
+   PERFIL ADICIONAR
+   ========================================================================== */
+.pf-perfil-adicionar .pf-avatar-wrapper {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 2px dashed #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-perfil-adicionar:hover .pf-avatar-wrapper {
+  border-color: #60a5fa;
+  background: linear-gradient(145deg, #1e3a5f, #0f172a);
+}
+
+.pf-perfil-adicionar:hover .pf-avatar-wrapper i {
+  color: #ffffff;
+  transform: rotate(90deg);
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+.pf-btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #334155;
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.pf-btn-secundario:hover {
+  background-color: #475569;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pf-rodape {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES (Padronizadas com Vitrine)
+   ========================================================================== */
+.pf-animar-escalar {
+  animation: pfEscalarFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.pf-animar-subir {
+  animation: pfSubirFadeIn 0.55s ease both;
+}
+
+.pf-delay-2 {
+  animation-delay: 0.15s;
+}
+
+.pf-delay-3 {
+  animation-delay: 0.25s;
+}
+
+@keyframes pfEscalarFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pfSubirFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pfPulsar {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 992px) {
+  .pf-lista-perfis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .pf-titulo {
+    font-size: 34px;
+  }
+
+  .pf-marca-dagua {
+    font-size: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pf-container {
+    padding: 40px 16px;
+  }
+
+  .pf-lista-perfis {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .pf-titulo {
+    font-size: 28px;
+  }
+
+  .pf-descricao {
+    font-size: 14px;
+  }
+
+  .pf-avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .pf-marca-dagua {
+    font-size: 180px;
+  }
+
+  .pf-btn-secundario {
+    width: 100%;
+    justify-content: center;
+  }
+}

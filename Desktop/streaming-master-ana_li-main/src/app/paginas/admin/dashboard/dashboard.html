@@ -29,23 +29,23 @@
       </div>
 
       <nav class="sv-sidebar-nav">
-        <a href="#" class="sv-nav-item sv-nav-active">
+        <a routerLink="/admin/dashboard" class="sv-nav-item sv-nav-active">
           <i class="ti ti-dashboard"></i>
           <span>Dashboard</span>
         </a>
-        <a href="#" class="sv-nav-item">
+        <a routerLink="/admin/dashboard" class="sv-nav-item">
           <i class="ti ti-movie"></i>
           <span>Filmes</span>
         </a>
-        <a href="#" class="sv-nav-item">
+        <a routerLink="/admin/dashboard" class="sv-nav-item">
           <i class="ti ti-category"></i>
           <span>Categorias</span>
         </a>
-        <a href="#" class="sv-nav-item">
+        <a routerLink="/admin/dashboard" class="sv-nav-item">
           <i class="ti ti-users"></i>
           <span>Usuários</span>
         </a>
-        <a href="#" class="sv-nav-item">
+        <a routerLink="/admin/dashboard" class="sv-nav-item">
           <i class="ti ti-settings"></i>
           <span>Configurações</span>
         </a>
@@ -138,13 +138,13 @@
             <p>Carregando filmes...</p>
           </div>
 
-        } @else if (artigos().length === 0) {
+        } @else if (streaming().length === 0) {
 
           <div class="sv-empty">
             <i class="ti ti-movie-off"></i>
             <h3>Nenhum filme cadastrado</h3>
             <p>Comece adicionando seu primeiro filme</p>
-            <a routerLink="/admin/create" class="sv-btn-primary">
+            <a routerLink="/admin/create" class="sv-btn-primary sv-btn-small">
               <i class="ti ti-plus"></i>
               Adicionar filme
             </a>
@@ -167,7 +167,7 @@
 
               <tbody>
 
-                @for(item of artigos(); track item.id){
+                @for(item of streaming(); track item.id){
 
                   <tr>
 
@@ -202,13 +202,13 @@
                       <div class="sv-actions">
                         <button
                           class="sv-action-btn sv-btn-edit"
-                          (click)="editArtigo(item.id)"
+                          (click)="editMovie(item.id)"
                           title="Editar">
                           <i class="ti ti-edit"></i>
                         </button>
                         <button
                           class="sv-action-btn sv-btn-delete"
-                          (click)="deleteArtigo(item.id)"
+                          (click)="deleteMovie(item.id)"
                           title="Excluir">
                           <i class="ti ti-trash"></i>
                         </button>
@@ -227,6 +227,12 @@
         }
 
       </section>
+
+      <!-- RODAPÉ -->
+      <footer class="sv-footer">
+        <p>&copy; 2026 CineAdmi. Todos os direitos reservados.</p>
+        <p>Desenvolvido com <i class="ti ti-heart-filled"></i> para gestão de filmes</p>
+      </footer>
 
     </main>
 

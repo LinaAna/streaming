@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
-import { Streaming } from '../../../core/services/artigo-service';
+import { Streaming } from '../../../core/services/streamingService';
 import { MovieModel } from '../../../core/models/movieModel';
 
 @Component({
@@ -12,7 +12,7 @@ import { MovieModel } from '../../../core/models/movieModel';
   styleUrl: './movie-form.css',
 })
 export class MovieForm implements OnInit {
-  private readonly artigoService = inject(Streaming);
+  private readonly movieService = inject(Streaming);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
@@ -20,7 +20,7 @@ export class MovieForm implements OnInit {
   isEditMode = false;
   movieId: number | null = null;
 
-  artigoForm = new FormGroup({
+  movieForm = new FormGroup({
     titulo: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2)] }),
     genero: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     ano_lancamento: new FormControl<number | null>(null, [Validators.required]),
@@ -39,9 +39,9 @@ export class MovieForm implements OnInit {
   }
 
   private loadMovieData(id: number): void {
-    this.artigoService.getById(id).subscribe({
+    this.movieService.getById(id).subscribe({
       next: (movie: MovieModel) => {
-        this.artigoForm.patchValue({
+        this.movieForm.patchValue({
           titulo: movie.titulo,
           genero: movie.genero,
           ano_lancamento: movie.ano_lancamento,
@@ -63,13 +63,13 @@ export class MovieForm implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.artigoForm.invalid) {
+    if (this.movieForm.invalid) {
       alert('Preencha todos os campos obrigatórios corretamente');
-      this.artigoForm.markAllAsTouched();
+      this.movieForm.markAllAsTouched();
       return;
     }
 
-    const values = this.artigoForm.value;
+    const values = this.movieForm.value;
     
     const movieData = {
       titulo: values.titulo,
@@ -82,7 +82,7 @@ export class MovieForm implements OnInit {
     console.log('Enviando dados:', movieData);
 
     if (this.isEditMode && this.movieId) {
-      this.artigoService.update(this.movieId, movieData).subscribe({
+      this.movieService.update(this.movieId, movieData).subscribe({
         next: (response) => {
           console.log('Filme atualizado:', response);
           alert('Filme updated com sucesso!');
@@ -94,7 +94,7 @@ export class MovieForm implements OnInit {
         },
       });
     } else { // Adicionado o comando "else" que faltava aqui
-      this.artigoService.create(movieData).subscribe({
+      this.movieService.create(movieData).subscribe({
         next: (response) => {
           console.log('Filme criado:', response);
           alert('Filme criado com sucesso!');

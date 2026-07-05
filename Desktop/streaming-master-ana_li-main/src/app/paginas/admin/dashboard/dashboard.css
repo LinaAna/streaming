@@ -608,6 +608,36 @@ body {
   }
 }
 
+/* ==========================================================================
+   BOTÃO PEQUENO (Empty State)
+   ========================================================================== */
+.sv-btn-small {
+  padding: 10px 20px !important;
+  font-size: 0.85rem !important;
+  display: inline-flex !important;
+  width: auto !important;
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.sv-footer {
+  margin-top: 40px;
+  padding: 30px 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #1f2937;
+}
+
+.sv-footer p {
+  margin: 4px 0;
+}
+
+.sv-footer i {
+  color: #ef4444;
+}
+
 @media (max-width: 600px) {
   .sv-stats {
     grid-template-columns: 1fr 1fr;

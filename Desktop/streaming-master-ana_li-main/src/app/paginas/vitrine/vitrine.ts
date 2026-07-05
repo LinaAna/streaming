@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MovieModel } from '../../core/models/movieModel';
 import { Movie } from '../../shared/movie/movie';
-import { Streaming } from '../../core/services/artigo-service';
+import { Streaming } from '../../core/services/streamingService';
 
 @Component({
   selector: 'app-vitrine',

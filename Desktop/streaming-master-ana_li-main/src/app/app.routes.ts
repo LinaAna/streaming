@@ -7,18 +7,21 @@ import { Inicio } from './paginas/auth/inicio/inicio';
 import { Movie } from './shared/movie/movie';
 import { Dashboard } from './paginas/admin/dashboard/dashboard';
 import { MovieForm } from './paginas/admin/movie-form/movie-form';
-
 import { guardGuard } from './core/guards/guard-guard';
-import { Perfis } from './pages/perfis/perfis';
+import { Perfis } from './paginas/perfis/perfis';
 import { MinhaLista } from './paginas/minhalista/minhalista';
 
 export const routes: Routes = [
+  // Rotas públicas
+  { path: '', component: Inicio },  // ← Página inicial é Inicio
+  { path: 'perfis', component: Perfis },  // ← Rota específica para perfis
   { path: 'vitrine', component: Vitrine },
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'cadastro', component: Cadastro },
   { path: 'inicio', component: Inicio },
   { path: 'minhalista', component: MinhaLista },
+  
+  // Rotas admin
   {
     path: 'admin',
     canActivate: [guardGuard],
@@ -29,8 +32,6 @@ export const routes: Routes = [
       { path: 'edit/:id', component: MovieForm }, 
     ],
   },
-  {
-    path: 'perfis',
-    component: Perfis,
-  },
+  
+  { path: '**', redirectTo: '' }
 ];

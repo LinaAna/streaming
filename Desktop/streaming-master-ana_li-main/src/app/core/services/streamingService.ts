@@ -9,6 +9,7 @@ import { MovieModel } from '../models/movieModel';
 export class Streaming {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/filmes';
+  
 
   getAll(): Observable<MovieModel[]> {
     const headers = new HttpHeaders();
